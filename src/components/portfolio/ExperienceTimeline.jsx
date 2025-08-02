@@ -41,10 +41,6 @@ const ExperienceTimeline = ({ experiences }) => {
               </div>
             </div>
 
-            <div style={{ color: '#f02eaa', marginBottom: '4px' }}>
-              Author: Developer &lt;dev@portfolio.com&gt;
-            </div>
-
             <div
               style={{
                 borderLeft: '2px solid #f02eaa',
