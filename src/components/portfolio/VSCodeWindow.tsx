@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { X, Minus, Square } from 'lucide-react';
 
 interface VSCodeWindowProps {
@@ -10,9 +10,6 @@ interface VSCodeWindowProps {
 
 const VSCodeWindow: React.FC<VSCodeWindowProps> = ({ title, children, className = '', style = {} }) => {
   const [isMobile, setIsMobile] = React.useState(false);
-  const [isMinimized, setIsMinimized] = useState(false);
-  const [isMaximized, setIsMaximized] = useState(false);
-  const [isClosed, setIsClosed] = useState(false);
 
   React.useEffect(() => {
     const handleResize = () => setIsMobile(window.innerWidth <= 768);
@@ -21,27 +18,8 @@ const VSCodeWindow: React.FC<VSCodeWindowProps> = ({ title, children, className 
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
-  if (isClosed) return null;
-
   return (
-    <div style={{ 
-      borderRadius: isMaximized ? '0' : '0.5rem', 
-      boxShadow: isMaximized ? 'none' : '0 0 12px rgba(255, 0, 150, 0.5)', 
-      border: '1px solid rgba(255, 0, 150, 0.6)', 
-      overflow: 'hidden',
-      position: isMaximized ? 'fixed' : 'relative',
-      top: isMaximized ? '0' : 'auto',
-      left: isMaximized ? '0' : 'auto',
-      right: isMaximized ? '0' : 'auto',
-      bottom: isMaximized ? '0' : 'auto',
-      width: isMaximized ? '100vw' : 'auto',
-      height: isMaximized ? '100vh' : 'auto',
-      margin: isMaximized ? '0' : 'auto',
-      zIndex: isMaximized ? 999999 : 'auto',
-      transition: 'all 0.2s ease',
-      backgroundColor: '#1e1e1e',
-      ...style 
-    }}>
+    <div style={{ borderRadius: '0.5rem', boxShadow: '0 0 12px rgba(255, 0, 150, 0.5)', border: '1px solid rgba(255, 0, 150, 0.6)', overflow: 'hidden', ...style }}>
       {/* Title bar */}
       <div
         style={{
@@ -64,19 +42,16 @@ const VSCodeWindow: React.FC<VSCodeWindowProps> = ({ title, children, className 
         <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', color: '#9ca3af' }}>
           <Minus
             style={{ width: '1rem', height: '1rem', cursor: 'pointer' }}
-            onClick={() => setIsMinimized(!isMinimized)}
             onMouseEnter={(e) => (e.currentTarget.style.color = '#e5e7eb')}
             onMouseLeave={(e) => (e.currentTarget.style.color = '#9ca3af')}
           />
           <Square
             style={{ width: '1rem', height: '1rem', cursor: 'pointer' }}
-            onClick={() => setIsMaximized(!isMaximized)}
             onMouseEnter={(e) => (e.currentTarget.style.color = '#e5e7eb')}
             onMouseLeave={(e) => (e.currentTarget.style.color = '#9ca3af')}
           />
           <X
             style={{ width: '1rem', height: '1rem', cursor: 'pointer' }}
-            onClick={() => setIsClosed(true)}
             onMouseEnter={(e) => (e.currentTarget.style.color = '#e5e7eb')}
             onMouseLeave={(e) => (e.currentTarget.style.color = '#9ca3af')}
           />
@@ -84,18 +59,9 @@ const VSCodeWindow: React.FC<VSCodeWindowProps> = ({ title, children, className 
       </div>
 
       {/* Content */}
-      {!isMinimized && (
-        <div style={{ 
-          padding: isMobile ? '1rem' : '1.5rem', 
-          backgroundColor: '#1e1e1e',
-          height: isMaximized ? 'calc(100vh - 50px)' : 'auto',
-          maxHeight: isMaximized ? 'calc(100vh - 50px)' : 'none',
-          overflow: isMaximized ? 'auto' : 'visible',
-          width: isMaximized ? '100vw' : 'auto'
-        }} className={className}>
-          {children}
-        </div>
-      )}
+      <div style={{ padding: isMobile ? '1rem' : '1.5rem', backgroundColor: '#1e1e1e' }} className={className}>
+        {children}
+      </div>
     </div>
 
   );
