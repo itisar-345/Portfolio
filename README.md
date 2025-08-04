@@ -86,29 +86,6 @@ src/
     └── terrainGenerator.js
 ```
 
-## 🎯 About Me
-
-### Personal Info
-- **Software Developer** specializing in AI, Full-Stack, and Salesforce Development
-- **Location**: Mumbai, India
-- **Focus**: Building innovative solutions that make a real impact
-
-### Featured Projects
-- **AI Resume Scanner**: 97% ATS compatibility scoring with actionable feedback
-- **Invoice Data Extractor**: Desktop app with 95%+ OCR accuracy using Gemini AI
-- **Diabetes Predictor**: Web app with 84% accuracy for health classification
-
-### Professional Experience
-- **SDE Intern** at Home First Finance - Built Campus Recruitment Management System
-- **AI Intern** at Edunet Foundation - Developed AI chatbot for health risk prediction
-- **Team Lead** at Somaiya Machine Learning Research Association
-
-### Achievements & Certifications
-- **IEEE Research Paper** presentation at ICCCNT 2025
-- **IBM Certifications** in Cyber Security & Cloud Technologies
-- **Google Cloud** BigQuery certification
-- **UC Irvine** Project Management certification
-
 ## 🎮 Game Controls
 
 - **Arrow Keys**: Move player character
@@ -138,7 +115,7 @@ Supported commands:
 ## 🚀 Deployment
 
 The website is optimized for deployment on:
-- **Vercel** (recommended)
+- **Vercel** 
 - **Netlify**
 - **GitHub Pages**
 - Any static hosting service
