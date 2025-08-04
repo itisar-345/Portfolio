@@ -12,136 +12,6 @@ const ProjectCard = ({
   imageUrl
 }) => {
   const isMobile = useIsMobile();
-  const styles = {
-    card: {
-      height: '600px',
-      borderRadius: '8px',
-      overflow: 'hidden',
-      transform: 'scale(1)',
-      transition: 'transform 0.3s ease',
-      boxShadow: isActive ? '0 0 0 2px #d16f9e' : undefined,
-      display: 'flex',
-      flexDirection: 'column',
-      backgroundColor: '#1e1e1e',
-    },
-    tabBar: {
-      display: 'flex',
-      backgroundColor: '#2d2d2d',
-    },
-    tab: {
-      display: 'flex',
-      alignItems: 'center',
-      padding: '0.5rem 1rem',
-      backgroundColor: isActive ? '#1e1e1e' : 'transparent',
-      borderTopLeftRadius: '6px',
-      borderTopRightRadius: '6px',
-    },
-    tabText: {
-      color: '#cccccc',
-      fontFamily: 'monospace',
-      fontSize: '0.875rem',
-    },
-    content: {
-      padding: '1.5rem',
-      backgroundColor: '#1e1e1e',
-      flex: 1,
-      overflow: 'hidden',
-      display: 'flex',
-      flexDirection: 'column',
-    },
-    imageWrapper: {
-      marginBottom: '1rem',
-      border: '1px solid rgba(209, 111, 158, 0.3)',
-      borderRadius: '6px',
-      overflow: 'hidden',
-      flexShrink: 0,
-    },
-    image: {
-      width: '100%',
-      height: '128px',
-      objectFit: 'cover',
-      transition: 'transform 0.3s ease',
-    },
-    block: {
-      marginBottom: '1rem',
-      flexShrink: 0,
-    },
-    blockTitle: {
-      color: '#d16f9e',
-      fontFamily: 'monospace',
-      fontSize: '1.125rem',
-      fontWeight: 'bold',
-    },
-    label: {
-      color: '#d16f9e',
-      fontFamily: 'monospace',
-      fontSize: '0.875rem',
-      marginBottom: '0.5rem',
-    },
-    description: {
-      color: '#cccccc',
-      fontSize: '0.875rem',
-      lineHeight: 1.6,
-      whiteSpace: 'pre-line',
-      overflowY: 'auto',
-      flex: 1,
-    },
-    tech: {
-      display: 'flex',
-      flexWrap: 'wrap',
-      gap: '0.5rem',
-    },
-    techTag: {
-      padding: '0.25rem 0.5rem',
-      backgroundColor: '#000000',
-      border: '1px solid #d16f9e',
-      borderRadius: '4px',
-      fontFamily: 'monospace',
-      fontSize: '0.75rem',
-      color: '#d16f9e',
-      cursor: 'default',
-      transition: 'background-color 0.2s, color 0.2s',
-    },
-    buttonRow: {
-      display: 'flex',
-      gap: '0.75rem',
-      flexShrink: 0,
-    },
-    githubButton: {
-      flex: 1,
-      border: '1px solid #d16f9e',
-      backgroundColor: 'transparent',
-      color: '#d16f9e',
-      fontFamily: 'monospace',
-      fontSize: '0.875rem',
-      padding: '0.5rem 0.75rem',
-      display: 'flex',
-      alignItems: 'center',
-      justifyContent: 'center',
-      textDecoration: 'none',
-      borderRadius: '4px',
-      transition: 'background-color 0.2s, color 0.2s',
-    },
-    liveButton: {
-      flex: 1,
-      backgroundColor: '#d16f9e',
-      color: '#000000',
-      fontFamily: 'monospace',
-      fontSize: '0.875rem',
-      padding: '0.5rem 0.75rem',
-      display: 'flex',
-      alignItems: 'center',
-      justifyContent: 'center',
-      textDecoration: 'none',
-      borderRadius: '4px',
-      transition: 'background-color 0.2s',
-    },
-    icon: {
-      width: '1rem',
-      height: '1rem',
-      marginRight: '0.5rem',
-    }
-  };
 
   // Handlers for hover effects on buttons (for outline)
   const handleOutlineMouseEnter = (e) => {
@@ -203,7 +73,7 @@ const ProjectCard = ({
           }}
         >
           <Code style={{ width: '16px', height: '16px', marginRight: '8px' }} />
-          <span>{`${title.toLowerCase().replace(/\s+/g, '_')}.js`}</span>
+          <span>{`${title.toLowerCase().replace(/\s+/g, '_')}.md`}</span>
         </div>
         <div style={{ flex: 1, backgroundColor: '#1e1e1e' }}></div>
       </div>

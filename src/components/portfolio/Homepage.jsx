@@ -173,17 +173,17 @@ const HomePage = () => {
               <div style={{ margin: isMobile ? '0.5rem' : '1rem', padding: isMobile ? '1rem' : '1.5rem', boxShadow: '0 0 12px rgba(255, 0, 150, 0.2)', border: '1px solid rgba(255, 0, 150, 0.3)'}}>
                 <CodeSnippet 
                   code={`const developer = {
-                            name: "Ritisa Behera",
-                            location: "Mumbai, India",
-                            languages: ["Python", "Java", "JavaScript", "C", "SQL", "Apex"],
-                            currentFocus: "Software, AI & Salesforce Development",
-                            coffeeConsumed: "∞",
-                            linesOfCode: "15000+",
-                            bugs: { 
-                                created: "many", 
-                                fixed: "most" 
-                            }
-                            };`}
+                    name: "Ritisa Behera",
+                    location: "Mumbai, India",
+                    languages: ["Python", "Java", "JavaScript", "C", "SQL", "Apex"],
+                    currentFocus: "Software, AI & Salesforce Development",
+                    coffeeConsumed: "∞",
+                    linesOfCode: "15000+",
+                    bugs: { 
+                      created: "many", 
+                      fixed: "most" 
+                      }
+                  };`}
                   language="javascript"
                 />
               </div>
@@ -334,28 +334,26 @@ const HomePage = () => {
               <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
                 <div style={{ padding:'1rem', borderRadius: '4px', backgroundColor:'#0a0a0a', boxShadow: '0 0 12px rgba(255, 0, 150, 0.2)', border: '1px solid rgba(255, 0, 150, 0.3)'}}>
                 <CodeSnippet 
-                  code={`
-                    const aboutMe = {
-                    passion: "Crafting innovative AI and full-stack solutions",
-                    focus: "AI, Cloud, Salesforce Development",
-                    philosophy: "Code with purpose, impact with precision",
-                    motivation: "Enhancing lives through technology",
-                    favoriteLang: "Python & JavaScript",
-                    currentlyLearning: "Advanced LLMs & Cloud Architecture"
-                    };`}
+                  code={`const aboutMe = {
+	passion: "Crafting innovative AI and full-stack solutions",
+	focus: "AI, Cloud, Salesforce Development",
+	philosophy: "Code with purpose, impact with precision",
+	motivation: "Enhancing lives through technology",
+	favoriteLang: "Java & Python",
+	currentlyLearning: "Advanced LLMs & Cloud Architecture"
+};`}
                   language="aboutme"
                 />
                 </div>
                 <div style={{ padding:'1rem', borderRadius: '4px', backgroundColor:'#0a0a0a', boxShadow: '0 0 12px rgba(255, 0, 150, 0.2)', border: '1px solid rgba(255, 0, 150, 0.3)'}}>
                 <CodeSnippet 
-                  code={`
-                    const techStack = {
-                    frontend: ["React", "React Native", "JavaScript", "HTML/CSS", "Bootstrap", "Lightning Web Components"],
-                    backend: ["Node.js", "Express", "Flask", "Apex", "MySQL", "PostgreSQL", "MongoDB"],
-                    ai_ml: ["TensorFlow", "Scikit-learn", "Pandas", "NLTK", "Langchain", "LLMs"],
-                    devops: ["Docker", "Kubernetes", "AWS", "Google Cloud", "IBM Cloud", "Git"],
-                    tools: ["Git", "GitHub", "VSCode", "Selenium", "Google Colab"]
-                    };`}
+                  code={`const techStack = {
+	frontend: ["React", "React Native", "JavaScript", "HTML/CSS", "Bootstrap", 	"Lightning Web Components"],
+	backend: ["Node.js", "Express", "Flask", "Apex", "MySQL", "PostgreSQL", "MongoDB"],
+	ai_ml: ["TensorFlow", "Scikit-learn", "Pandas", "NLTK", "Langchain", "LLMs"],
+	devops: ["Docker", "Kubernetes", "AWS", "Google Cloud", "IBM Cloud"],
+	tools: ["Git", "GitHub", "VSCode", "Selenium", "Google Colab", "Salesforce"]
+};`}
                   language="techstack"
                 />
                 </div>
@@ -438,7 +436,6 @@ const HomePage = () => {
                 </h2>
                 <p style={{ fontFamily: 'monospace', color: '#d4d4d4' }}>$ ls -la ~/projects/featured/</p>
             </div>
-            </VSCodeWindow>
 
             <div style={{
               position: 'relative',
@@ -531,6 +528,8 @@ const HomePage = () => {
                 ))}
               </Carousel>
             </div>
+            </VSCodeWindow>
+
         </div>
         </section>
 
@@ -561,7 +560,7 @@ const HomePage = () => {
                     >
                     # Experience Timeline
                     </h2>
-                    <p style={{ fontFamily: 'monospace', color: '#d4d4d4' }}>$ git log --author="Ritisa" --pretty=oneline</p>
+                    <p style={{ fontFamily: 'monospace', color: '#d4d4d4' }}>$ git log --author="Ritisa" --pretty=online</p>
                 </div>
 
                 <ExperienceTimeline experiences={experiences} />
