@@ -348,7 +348,7 @@ const HomePage = () => {
                     favoriteLang: "Python & JavaScript",
                     currentlyLearning: "Advanced LLMs & Cloud Architecture"
                     };`}
-                  language="AboutMe"
+                  language="aboutme"
                 />
                 </div>
                 <div style={{ padding:'1rem', borderRadius: '4px', backgroundColor:'#0a0a0a', boxShadow: '0 0 12px rgba(255, 0, 150, 0.2)', border: '1px solid rgba(255, 0, 150, 0.3)'}}>
@@ -361,7 +361,7 @@ const HomePage = () => {
                     devops: ["Docker", "Kubernetes", "AWS", "Google Cloud", "IBM Cloud", "Git"],
                     tools: ["Git", "GitHub", "VSCode", "Selenium", "Google Colab"]
                     };`}
-                  language="TechStack"
+                  language="techstack"
                 />
                 </div>
               </div>
