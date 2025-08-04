@@ -1,5 +1,6 @@
 import { useRef } from 'react';
 import { ExternalLink, Github, Code } from 'lucide-react';
+import { useIsMobile } from '../../hooks/use-mobile';
 
 const ProjectCard = ({
   title,
@@ -10,6 +11,7 @@ const ProjectCard = ({
   isActive = false,
   imageUrl
 }) => {
+  const isMobile = useIsMobile();
   const styles = {
     card: {
       height: '600px',
@@ -168,7 +170,7 @@ const ProjectCard = ({
         transform: isActive ? 'scale(1.05)' : 'scale(1)',
         borderRadius: '6px',
         overflow: 'hidden',
-        maxWidth: '480px',
+        maxWidth: isMobile ? '100%' : '480px',
         backgroundColor: '#1e1e1e',
         boxShadow: '0 0 12px rgba(255, 0, 150, 0.2)', 
         border: '1px solid rgba(255, 0, 150, 0.3)',
@@ -193,7 +195,7 @@ const ProjectCard = ({
           style={{
             display: 'flex',
             alignItems: 'center',
-            padding: '0.5rem 1rem',
+            padding: isMobile ? '0.5rem 0.75rem' : '0.5rem 1rem',
             backgroundColor: isActive ? '#1e1e1e' : 'transparent',
             borderBottom: isActive ? '2px solid #f02eaa' : '2px solid transparent',
             color: '#e1e1e6',
@@ -208,9 +210,9 @@ const ProjectCard = ({
 
       
       {/* Content */}
-      <div style={{ padding: '1.5rem', backgroundColor: '#1e1e1e' }}>
+      <div style={{ padding: isMobile ? '1rem' : '1.5rem', backgroundColor: '#1e1e1e' }}>
         {/* Project Title */}
-        <div style={{ marginBottom: '1rem', padding:'1rem', backgroundColor:'#0a0a0a', borderRadius: '4px', boxShadow: '0 0 12px rgba(255, 0, 150, 0.1)', border: '1px solid rgba(255, 0, 150, 0.2)'  }}>
+        <div style={{ marginBottom: '1rem', padding: isMobile ? '0.75rem' : '1rem', backgroundColor:'#0a0a0a', borderRadius: '4px', boxShadow: '0 0 12px rgba(255, 0, 150, 0.1)', border: '1px solid rgba(255, 0, 150, 0.2)'  }}>
           <div
             style={{
               color: '#ff2da0',
@@ -248,7 +250,7 @@ const ProjectCard = ({
 
 
         {/* Tech Stack */}
-        <div style={{ marginBottom: '1rem', padding:'1rem', backgroundColor:'#0a0a0a', borderRadius: '4px', boxShadow: '0 0 12px rgba(255, 0, 150, 0.1)', border: '1px solid rgba(255, 0, 150, 0.2)'  }}>
+        <div style={{ marginBottom: '1rem', padding: isMobile ? '0.75rem' : '1rem', backgroundColor:'#0a0a0a', borderRadius: '4px', boxShadow: '0 0 12px rgba(255, 0, 150, 0.1)', border: '1px solid rgba(255, 0, 150, 0.2)'  }}>
           <div style={{ color: '#ff2da0', fontFamily: 'Fira Code, monospace' }}>
             // Technologies used
           </div>
@@ -290,7 +292,7 @@ const ProjectCard = ({
         </div>
 
         {/* Action Buttons */}
-        <div style={{ display: 'flex', gap: '0.75rem' }}>
+        <div style={{ display: 'flex', gap: isMobile ? '0.5rem' : '0.75rem', flexDirection: isMobile ? 'column' : 'row' }}>
           {githubUrl && (
             <button
               type="button"

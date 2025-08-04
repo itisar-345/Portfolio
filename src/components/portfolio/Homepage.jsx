@@ -15,6 +15,7 @@ import { GameProvider } from '../../context/GameContext';
 import { Carousel } from 'react-responsive-carousel';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
 import { Mail, Github, Linkedin, Terminal, Code, Coffee, Home, User, Briefcase, ArrowLeft, ArrowRight } from 'lucide-react';
+import { useIsMobile } from '../../hooks/use-mobile';
 
 const HomePage = () => {
   const [activeSection, setActiveSection] = useState('hero');
@@ -56,14 +57,7 @@ const HomePage = () => {
   }, []);
 
   const [showGame, setShowGame] = useState(false);
-  const [isMobile, setIsMobile] = useState(false);
-
-  useEffect(() => {
-    const handleResize = () => setIsMobile(window.innerWidth <= 768);
-    handleResize();
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
-  }, []);
+  const isMobile = useIsMobile();
 
   const chunkArray = (array, size) => {
     const chunked = [];
@@ -98,10 +92,11 @@ const HomePage = () => {
     <div style={{
         minHeight: '100vh',
         backgroundColor: 'black',
-        fontSize: '1rem',
+        fontSize: isMobile ? '0.875rem' : '1rem',
         color: '#d4d4d4',
         position: 'relative',
         overflow: 'hidden',
+        touchAction: 'pan-y',
     }}>
       <MatrixRain />
       <ParticleBackground />
@@ -109,7 +104,7 @@ const HomePage = () => {
       <FabNavigation onNavigate={handleNavigate} />
       <VoiceAssistant onNavigate={handleNavigate} />
       
-      <main style={{ marginLeft: '4rem', position: 'relative', zIndex: 10 }}>
+      <main style={{ marginLeft: isMobile ? '0' : '4rem', position: 'relative', zIndex: 10 }}>
         {/* Hero Section - Enhanced Terminal Style */}
         <section id="hero" style={{
             minHeight: '100vh',
@@ -117,12 +112,12 @@ const HomePage = () => {
             flexDirection: 'column',
             alignItems: 'center',
             justifyContent: 'center',
-            paddingLeft: '2rem',
-            paddingRight: '2rem',
+            paddingLeft: isMobile ? '1rem' : '2rem',
+            paddingRight: isMobile ? '1rem' : '2rem',
         }}>
           <div style={{ 
             width: '100%', 
-            maxWidth: '96rem' ,
+            maxWidth: isMobile ? '100%' : '96rem',
             backgroundColor: '#0a0a0a', 
             borderRadius: '8px',
             color: '#f8f8f2',
@@ -131,7 +126,7 @@ const HomePage = () => {
             border: '1px solid rgba(255, 0, 150, 0.6)',
             }}>
             <div style={{ 
-                padding: '2rem', 
+                padding: isMobile ? '1rem' : '2rem', 
                 lineHeight: '1.6',
                 whiteSpace: 'pre-wrap',
                 color: '#e1e1e6',
@@ -156,7 +151,7 @@ const HomePage = () => {
               
               <div style={{ textAlign: 'center' }}>
                 <div style={{
-                    fontSize: '3rem',
+                    fontSize: isMobile ? '2rem' : '3rem',
                     fontWeight: 'bold',
                     marginBottom: '1rem',
                     fontFamily: 'monospace',
@@ -167,7 +162,7 @@ const HomePage = () => {
                   &lt;RITISA/&gt;
                 </div>
                 
-                <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', gap: '1rem', marginBottom: '2rem' }}>
+                <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', gap: isMobile ? '0.5rem' : '1rem', marginBottom: '2rem', flexWrap: 'wrap' }}>
                   <Code style={{ width: '1.5rem', height: '1.5rem', color: '#f02eaa' }}/>
                   <span style={{ fontFamily: 'monospace' }}><TypewriterText text="while(alive) {{ eat(); sleep(); code(); repeat(); }"/></span>
                   <Coffee style={{ width: '1.5rem', height: '1.5rem', color: '#f02eaa' }} />
@@ -175,7 +170,7 @@ const HomePage = () => {
               </div>
 
               {/* Code Snippet Display */}
-              <div style={{ margin: '1rem', padding: '1.5rem', boxShadow: '0 0 12px rgba(255, 0, 150, 0.2)', border: '1px solid rgba(255, 0, 150, 0.3)'}}>
+              <div style={{ margin: isMobile ? '0.5rem' : '1rem', padding: isMobile ? '1rem' : '1.5rem', boxShadow: '0 0 12px rgba(255, 0, 150, 0.2)', border: '1px solid rgba(255, 0, 150, 0.3)'}}>
                 <CodeSnippet 
                   code={`const developer = {
                             name: "Ritisa Behera",
@@ -193,7 +188,7 @@ const HomePage = () => {
                 />
               </div>
               
-              <div style={{ display: 'flex', justifyContent: 'center', gap: '1.5rem', marginBottom: '1rem' }}>
+              <div style={{ display: 'flex', justifyContent: 'center', gap: isMobile ? '1rem' : '1.5rem', marginBottom: '1rem', flexWrap: 'wrap' }}>
                 <a href="mailto:ritisarabindra@gmail.com" 
                 style={{
                     color: '#f02eaa', // vscode-magenta
@@ -220,7 +215,7 @@ const HomePage = () => {
                 </a>
               </div>
               
-              <div style={{ display: 'flex', justifyContent: 'center', gap: '1rem', marginTop: '1rem' }}>
+              <div style={{ display: 'flex', justifyContent: 'center', gap: isMobile ? '0.5rem' : '1rem', marginTop: '1rem', flexDirection: isMobile ? 'column' : 'row', alignItems: 'center' }}>
                 <a
                   href="/Resume.pdf" 
                   download="Ritisa Behera.pdf"
@@ -297,7 +292,7 @@ const HomePage = () => {
           </div>
           
           {/* Clean Navigation Buttons */}
-          <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: '1rem', marginTop: '2rem' }}>
+          <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: isMobile ? '0.5rem' : '1rem', marginTop: '2rem' }}>
             {[
               { name: 'ABOUT', section: 'about' },
               { name: 'PROJECTS', section: 'projects' },
@@ -331,11 +326,11 @@ const HomePage = () => {
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
-                padding: '5rem 2rem',
+                padding: isMobile ? '2rem 1rem' : '5rem 2rem',
             }}
         >
-          <VSCodeWindow title="developer.config.js" style={{ width: '100%', maxWidth: '64rem' }}>
-            <div style={{ display: 'grid', gap: '2rem', gridTemplateColumns: '1fr', ...(window.innerWidth >= 768 && { gridTemplateColumns: '1fr 1fr' }) }}>
+          <VSCodeWindow title="developer.config.js" style={{ width: '100%', maxWidth: isMobile ? '100%' : '64rem' }}>
+            <div style={{ display: 'grid', gap: isMobile ? '1rem' : '2rem', gridTemplateColumns: isMobile ? '1fr' : '1fr 1fr' }}>
               <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
                 <div style={{ padding:'1rem', borderRadius: '4px', backgroundColor:'#0a0a0a', boxShadow: '0 0 12px rgba(255, 0, 150, 0.2)', border: '1px solid rgba(255, 0, 150, 0.3)'}}>
                 <CodeSnippet 
@@ -423,9 +418,9 @@ const HomePage = () => {
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
-                padding: '5rem 2rem',
+                padding: isMobile ? '2rem 1rem' : '5rem 2rem',
             }}>
-          <div style={{ width: '100%', maxWidth: '72rem' }}>
+          <div style={{ width: '100%', maxWidth: isMobile ? '100%' : '72rem' }}>
             <VSCodeWindow title="projects/README.md" style={{ marginBottom: '2rem' }}>
               <div style={{ textAlign: 'center' }}>
                 <h2
@@ -447,8 +442,8 @@ const HomePage = () => {
 
             <div style={{
               position: 'relative',
-              padding: '01rem ',
-              gap: '1.5rem',
+              padding: isMobile ? '0.5rem' : '1rem',
+              gap: isMobile ? '1rem' : '1.5rem',
             }}>
               <Carousel
                 showArrows={true}
@@ -475,8 +470,8 @@ const HomePage = () => {
                         border: '1px solid rgba(255, 0, 150, 0.6)',
                         color: '#1e1e1e',
                         borderRadius: '9999px',
-                        width: '40px',
-                        height: '40px',
+                        width: isMobile ? '32px' : '40px',
+                        height: isMobile ? '32px' : '40px',
                         display: 'flex',
                         justifyContent: 'center',
                         alignItems: 'center',
@@ -502,8 +497,8 @@ const HomePage = () => {
                         border: '1px solid rgba(255, 0, 150, 0.6)',
                         color: '#1e1e1e',
                         borderRadius: '9999px',
-                        width: '40px',
-                        height: '40px',
+                        width: isMobile ? '32px' : '40px',
+                        height: isMobile ? '32px' : '40px',
                         display: 'flex',
                         justifyContent: 'center',
                         alignItems: 'center',
@@ -516,8 +511,8 @@ const HomePage = () => {
                 {chunkedProjects.map((group, index) => (
                   <div key={index} style={{display: 'flex',
                     justifyContent: 'center',
-                    gap: '1.5rem',
-                    padding: '1rem',
+                    gap: isMobile ? '1rem' : '1.5rem',
+                    padding: isMobile ? '0.5rem' : '1rem',
                     flexWrap: 'wrap',
                     }}>
                     {group.map((project, idx) => (
@@ -547,10 +542,10 @@ const HomePage = () => {
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
-                padding: '2rem',
+                padding: isMobile ? '2rem 1rem' : '2rem',
             }}
             >
-            <VSCodeWindow title="git log --oneline --graph" style={{ width: '100%', maxWidth: '56rem' }}>
+            <VSCodeWindow title="git log --oneline --graph" style={{ width: '100%', maxWidth: isMobile ? '100%' : '56rem' }}>
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
                 <div style={{ textAlign: 'center'}}>
                     <h2

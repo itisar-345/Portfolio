@@ -1,15 +1,18 @@
 import { Calendar, MapPin } from 'lucide-react';
+import { useIsMobile } from '../../hooks/use-mobile';
 
 const ExperienceTimeline = ({ experiences }) => {
+  const isMobile = useIsMobile();
+
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
+    <div style={{ display: 'flex', flexDirection: 'column', gap: isMobile ? '16px' : '24px' }}>
       {experiences.map((exp, index) => (
         <div key={exp.id} style={{ position: 'relative' }}>
           {/* Git log style header */}
           <div
             style={{
               backgroundColor: '#0a0a0a',
-              padding: '16px',
+              padding: isMobile ? '12px' : '16px',
               borderRadius: '8px',
               fontFamily: "'Fira Code', monospace",
               color: '#e1e1e6',
@@ -20,9 +23,11 @@ const ExperienceTimeline = ({ experiences }) => {
             <div
               style={{
                 display: 'flex',
-                alignItems: 'center',
+                alignItems: isMobile ? 'flex-start' : 'center',
                 justifyContent: 'space-between',
                 marginBottom: '8px',
+                flexDirection: isMobile ? 'column' : 'row',
+                gap: isMobile ? '4px' : '0',
               }}
             >
               <div style={{ color: '#f02eaa', fontWeight: '600' }}>
@@ -44,7 +49,7 @@ const ExperienceTimeline = ({ experiences }) => {
             <div
               style={{
                 borderLeft: '2px solid #f02eaa',
-                paddingLeft: '16px',
+                paddingLeft: isMobile ? '12px' : '16px',
               }}
             >
               <h3 style={{ fontSize: '1.125rem', fontWeight: '600', color: '#e1e1e6' }}>
@@ -57,7 +62,9 @@ const ExperienceTimeline = ({ experiences }) => {
                   alignItems: 'center',
                   color: '#999',
                   marginBottom: '8px',
-                  fontSize: '0.875rem',
+                  fontSize: isMobile ? '0.75rem' : '0.875rem',
+                  flexWrap: 'wrap',
+                  gap: isMobile ? '4px' : '0',
                 }}
               >
                 <span style={{ color: '#f02eaa' }}>{exp.company}</span>
