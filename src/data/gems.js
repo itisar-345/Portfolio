@@ -166,5 +166,17 @@ export const allGems = [
     ],
     x: 6000,
     y: 370,
+  },
+  {
+    id: 'gem17',
+    title: 'Budget Calculator Pro',
+    type: 'project',
+    description: 'Professional budget calculator with income, expense, and savings tracking, provides cash flow projections and financial health insights, features real-time calculations, interactive charts, and data export',
+    date: '2025-08-11',
+    links: [
+      { label: 'Live Demo', url: 'https://itisar-345.github.io/Budget-Calculator/' }
+    ],
+    x: 5000,
+    y: 330,
   }
 ];

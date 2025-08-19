@@ -17,10 +17,18 @@ export const projects = [
     {
       title: "Diabetes Check Web App",
       description: "• Web app to classify users as Diabetic, Pre-diabetic, or Healthy\n• Based on a 20-question form with real-time results\n• Achieved 84% correct prediction rate\n• Provides personalized health feedback",
-      techStack: ["Python", "JavaScript", "Flask", "Scikit-learn"],
+      techStack: ["Python", "JavaScript", "Flask", "Scikit-learn", "HTML", "CSS"],
       githubUrl: "https://github.com/itisar-345/Diabetes-Predictor",
       liveUrl: "https://diabetes-predictor-g5yv.onrender.com/",
       imageUrl: "/diabetespredictor.png"
+    },
+    {
+      title: "Budget Calculator Pro",
+      description: "• Professional budget calculator with income, expense, and savings tracking \n• Provides cash flow projections, financial health insights and personalized recommendations \n• Supports data export, interactive charts, and responsive design \n• All data stored locally for privacy, with GitHub Pages deployment support",
+      techStack: ["React", "TypeScript", "Vite", "Github Actions"],
+      githubUrl: "https://github.com/itisar-345/Budget-Calculator",
+      liveUrl: "https://itisar-345.github.io/Budget-Calculator/",
+      imageUrl: "/budgetcal.png"
     }
 ];
 
