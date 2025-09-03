@@ -176,7 +176,7 @@ const HomePage = () => {
                     name: "Ritisa Behera",
                     location: "Mumbai, India",
                     languages: ["Python", "Java", "JavaScript", "C", "SQL", "Apex"],
-                    currentFocus: "Software, AI & Salesforce Development",
+                    currentFocus: "Software, DevOps & AI Development",
                     coffeeConsumed: "∞",
                     linesOfCode: "15000+",
                     bugs: { 
@@ -217,7 +217,7 @@ const HomePage = () => {
               
               <div style={{ display: 'flex', justifyContent: 'center', gap: isMobile ? '0.5rem' : '1rem', marginTop: '1rem', flexDirection: isMobile ? 'column' : 'row', alignItems: 'center' }}>
                 <a
-                  href="/Resume.pdf" 
+                  href="/Ritisa Resume.pdf" 
                   download="Ritisa Behera.pdf"
                   style={{
                     textDecoration: 'none',
@@ -335,8 +335,8 @@ const HomePage = () => {
                 <div style={{ padding:'1rem', borderRadius: '4px', backgroundColor:'#0a0a0a', boxShadow: '0 0 12px rgba(255, 0, 150, 0.2)', border: '1px solid rgba(255, 0, 150, 0.3)'}}>
                 <CodeSnippet 
                   code={`const aboutMe = {
-	passion: "Crafting innovative AI and full-stack solutions",
-	focus: "AI, Cloud, Salesforce Development",
+	passion: "Crafting innovative Full-Stack, Network and AI solutions",
+	focus: "Software, DevOps, Cloud, AI Development",
 	philosophy: "Code with purpose, impact with precision",
 	motivation: "Enhancing lives through technology",
 	favoriteLang: "Java & Python",
@@ -348,11 +348,13 @@ const HomePage = () => {
                 <div style={{ padding:'1rem', borderRadius: '4px', backgroundColor:'#0a0a0a', boxShadow: '0 0 12px rgba(255, 0, 150, 0.2)', border: '1px solid rgba(255, 0, 150, 0.3)'}}>
                 <CodeSnippet 
                   code={`const techStack = {
-	frontend: ["React", "React Native", "JavaScript", "HTML/CSS", "Bootstrap", 	"Lightning Web Components"],
-	backend: ["Node.js", "Express", "Flask", "Apex", "MySQL", "PostgreSQL", "MongoDB"],
-	ai_ml: ["TensorFlow", "Scikit-learn", "Pandas", "NLTK", "Langchain", "LLMs"],
-	devops: ["Docker", "Kubernetes", "AWS", "Google Cloud", "IBM Cloud"],
-	tools: ["Git", "GitHub", "VSCode", "Selenium", "Google Colab", "Salesforce"]
+
+	Languages & Frameworks: ["Java", "Python", "Javascript", "Apex", "HTML/CSS", "Bootstrap", "React", "Flask",	"Lightning Web Components"],
+
+	Tools & Technologies: ["Git", "Docker", "Kubernetes", "Jenkins", "Selenium", "Scikit-learn", "Pandas", "NLTK", "Langchain", "LLMs"],
+
+	Platform & Database: ["AWS", "Google Cloud", "IBM Cloud", "MySQL", "PostgreSQL", "MongoDB", "Salesforce"],
+  
 };`}
                   language="techstack.js"
                 />
@@ -396,11 +398,11 @@ const HomePage = () => {
                 <div style={{ padding: '1rem' }}>
                     <div style={{ color: '#f02eaa', fontFamily: 'monospace', marginBottom: '1rem' }}>$ ps aux | grep interests</div>
                     <div style={{ fontFamily: 'monospace', fontSize: '0.875rem', lineHeight: '1.5', display: 'flex', flexDirection: 'column', gap: '0.25rem' }}>
-                    <div>machine_learning        95%   [running]</div>
-                    <div>salesforce_dev         90%   [running]</div>
-                    <div>full_stack_dev         85%   [running]</div>
+                    <div>full_stack_dev         95%   [running]</div>
+                    <div>machine_learning       85%   [running]</div>
                     <div>cloud_technologies     80%   [running]</div>
                     <div>project_management     75%   [learning]</div>
+                    <div>salesforce_dev         60%   [running]</div>
                     </div>
                 </div>
                 </div>

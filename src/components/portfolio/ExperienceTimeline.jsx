@@ -1,4 +1,4 @@
-import { Calendar, MapPin } from 'lucide-react';
+import { Calendar, MapPin, FileText, ExternalLink } from 'lucide-react';
 import { useIsMobile } from '../../hooks/use-mobile';
 
 const ExperienceTimeline = ({ experiences }) => {
@@ -81,7 +81,7 @@ const ExperienceTimeline = ({ experiences }) => {
                 ))}
               </ul>
 
-              <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px' }}>
+              <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px', marginBottom: exp.documents ? '12px' : '0' }}>
                 {exp.technologies.map((tech, i) => (
                   <span
                     key={i}
@@ -98,6 +98,46 @@ const ExperienceTimeline = ({ experiences }) => {
                   </span>
                 ))}
               </div>
+
+              {exp.documents && (
+                <div style={{ marginTop: '12px' }}>
+                  <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px' }}>
+                    {exp.documents.map((doc, i) => (
+                      <a
+                        key={i}
+                        href={doc.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        style={{
+                          display: 'flex',
+                          alignItems: 'center',
+                          gap: '6px',
+                          padding: '6px 10px',
+                          backgroundColor: '#1a1a1a',
+                          border: '1px solid #f02eaa',
+                          borderRadius: '6px',
+                          fontSize: '0.75rem',
+                          color: '#f02eaa',
+                          textDecoration: 'none',
+                          transition: 'all 0.2s ease',
+                        }}
+                        onMouseEnter={(e) => {
+                          e.currentTarget.style.backgroundColor = '#f02eaa';
+                          e.currentTarget.style.color = '#ffffff';
+                        }}
+                        onMouseLeave={(e) => {
+                          e.currentTarget.style.backgroundColor = '#1a1a1a';
+                          e.currentTarget.style.color = '#f02eaa';
+                        }}
+                      >
+                        <FileText style={{ width: '14px', height: '14px' }} />
+                        {doc.name}
+                        <ExternalLink style={{ width: '12px', height: '12px' }} />
+                      </a>
+                    ))}
+                  </div>
+                </div>
+              )}
             </div>
           </div>
 

@@ -34,18 +34,22 @@ export const projects = [
 
 export const experiences = [
     {
-      id: "e1",
+      id: "e3",
       company: "Home First Finance Company",
       position: "SDE Intern",
       location: "Mumbai, India",
       startDate: "2025-06",
       endDate: "2025-08",
       description: [
-        "Built a Campus Recruitment Management System (CRMS) on Salesforce using Apex, Flows, and custom objects",
-        "Developed interactive Lightning Web Components (LWC) for job filtering, inline status updates, and guided student onboarding",
-        "Implemented email automation, application status triggers, and dynamic dashboards for enhanced recruitment tracking"
-      ],
-      technologies: ["Salesforce", "Apex", "Lightning Web Components", "JavaScript"]
+        "Contributed to the design and implementation of end-to-end loan processing workflows, including lead capture, application submission, document verification, underwriting, disbursement, and closure.",
+        "Demonstrated strong problem-solving skills and hands-on Salesforce development (Flows, Apex, LWC, and integrations with third-party APIs) in a real-time, team-driven project.", 
+        "Worked proactively, adapted quickly to dynamic workflows across teams, and effectively collaborated for transparent project execution."
+],
+      technologies: ["Salesforce", "Apex", "Lightning Web Components", "Screen Flows", "JavaScript"],
+      documents: [
+        { name: "Internship Completion Certificate", url: "/documents/HFFC-completion.pdf" },
+        { name: "Offer Letter", url: "/documents/HFFC-offer.pdf" }
+      ]
     },
     {
       id: "e2",
@@ -59,6 +63,26 @@ export const experiences = [
         "Trained and deployed a machine learning model using the Framingham dataset",
         "Enabled real-time predictions to enhance user interaction and risk awareness"
       ],
-      technologies: ["Python", "IBM Watson", "Scikit-learn", "NLP"]
-    }
+      technologies: ["Python", "IBM Watson", "Scikit-learn", "NLP", "Pipelines", "APIs", "Twilio"],
+      documents: [
+        { name: "Internship Completion Certificate", url: "/documents/Edunet-completion.pdf" }
+      ]
+    },
+    {
+      id: "e1",
+      company: "Acmegrade",
+      position: "Web Development Intern",
+      location: "Remote",
+      startDate: "2023-04",
+      endDate: "2023-06",
+      description: [
+      "Developed and maintained a full-stack e-commerce website with functionalities for customer product browsing, cart management, order placement, and vendor-side product/order controls",
+      "Implemented secure authentication mechanisms and enabled role-based access for customers and vendors",
+      "Collaborated with a team to troubleshoot issues, enhance features, and gain hands-on experience in web development processes"
+      ],
+      technologies: ["PHP", "HTML", "CSS", "JavaScript", "MySQL"],
+      documents: [
+        { name: "Internship Completion Certificate", url: "/documents/Acmegrade-completion.pdf" }
+      ]
+      }
 ];
