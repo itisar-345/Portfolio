@@ -9,6 +9,15 @@ export const allGems = [
     y: 250,
   },
   {
+    id: 'gem14',
+    title: 'SDE Intern - Home First Finance',
+    type: 'experience',
+    description: 'Developed a Campus Recruitment Management System on Salesforce with Apex, Lightning Web Components, and automation for enhanced recruitment tracking.',
+    date: '2025-06-09',
+    x: 4500,
+    y: 430,
+  },
+  {
     id: 'gem3',
     title: 'Diabetes Check Web App',
     type: 'project',
@@ -126,15 +135,6 @@ export const allGems = [
     y: 300,
   },
   {
-    id: 'gem14',
-    title: 'SDE Intern - Home First Finance',
-    type: 'experience',
-    description: 'Developed a Campus Recruitment Management System on Salesforce with Apex, Lightning Web Components, and automation for enhanced recruitment tracking.',
-    date: '2025-06-01',
-    x: 4500,
-    y: 430,
-  },
-  {
     id: 'gem8',
     title: 'Browser-based Models with TensorFlow.js',
     type: 'achievement',
@@ -154,6 +154,15 @@ export const allGems = [
     date: '2024-06-15',
     x: 5100,
     y: 360,
+  },
+  {
+    id: "gem18",
+    title: "Web Development Intern - Acmegrade",
+    type: "experience",
+    description: "Completed a remote web development internship; contributed to a full-stack e-commerce website with customer-facing and vendor-side functionalities. Developed features including product browsing, cart management, order placement, and secure authentication. Internship spanned from 12-Apr-2023 to 12-Jun-2023, emphasizing teamwork, hands-on development, and robust database-backed implementation.",
+    date: "2023-06-12",
+    x: 5500,
+    y: 400,
   },
   {
     id: 'gem10',

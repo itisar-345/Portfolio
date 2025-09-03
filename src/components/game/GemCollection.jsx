@@ -124,6 +124,7 @@ const GemCollection = ({ onSelectGem }) => {
             >
               <option value="all">All Types</option>
               <option value="skill">Skills</option>
+              <option value="experience">Experience</option>
               <option value="project">Projects</option>
               <option value="achievement">Achievements</option>
             </select>
@@ -224,6 +225,8 @@ const GemCollection = ({ onSelectGem }) => {
                           ? "rgb(255, 0, 255)"
                           : gem.type === "project"
                           ? "rgb(255, 0, 100)"
+                          : gem.type === "experience"
+                          ? "rgb(200, 255, 0)"
                           : "rgb(150, 0, 255)",
                       clipPath:
                         "polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%)",

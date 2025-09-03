@@ -81,6 +81,8 @@ export const GemModal = ({ gem, onClose }) => {
                   ? "rgb(255, 0, 255)"
                   : gem.type === "project"
                   ? "rgb(255, 0, 100)"
+                  : gem.type === "experience"
+                  ? "rgb(200, 255, 0)"
                   : "rgb(150, 0, 255)", 
               clipPath:
                 "polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%)",
