@@ -1,5 +1,12 @@
 export const projects = [
     {
+      title: "E-Commerce Platform",
+      description: "• Comprehensive e-commerce platform with Spring Boot + React and PHP implementations\n• Supports multi-role functionality for customers and vendors\n• Features product management, cart, order processing, and analytics\n• Secure JWT-based authentication and role-based access control\n• Responsive UI with Tailwind CSS and TypeScript",
+      techStack: ["Spring Boot", "React", "TypeScript", "MySQL", "JWT", "Tailwind CSS", "PHP", "JavaScript"],
+      githubUrl: "https://github.com/itisar-345/E-commerce-Project/",
+      imageUrl: "/ecommerce.png"
+    },
+    {
       title: "AI Resume Scanner",
       description: "• Analyzes uploaded resumes, scores ATS compatibility\n• Provides actionable suggestions to improve hiring chances\n• Achieved 97% accuracy with instant results\n• Secure browser-based data handling\n• Includes downloadable report generation",
       techStack: ["Python", "JavaScript", "React", "LLMs"],
