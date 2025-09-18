@@ -68,8 +68,8 @@ const ProjectCard = ({
             padding: isMobile ? '0.5rem 0.75rem' : '0.5rem 1rem',
             backgroundColor: isActive ? '#1e1e1e' : 'transparent',
             borderBottom: isActive ? '2px solid #f02eaa' : '2px solid transparent',
-            color: '#e1e1e6',
-            fontFamily: 'Fira Code, monospace',
+            color: '#d4d4d4dd',
+            fontSize: isMobile ? '12px' : '14px',
           }}
         >
           <Code style={{ width: '16px', height: '16px', marginRight: '8px' }} />
@@ -86,12 +86,13 @@ const ProjectCard = ({
           <div
             style={{
               color: '#ff2da0',
-              fontFamily: 'Fira Code, monospace',
+              fontFamily: 'monospace',
+              fontSize: isMobile ? '14px' : '16px',
             }}
           >
-            // Project: {title}
+            //{title}
           </div>
-          <div style={{ marginTop: '0.5rem', color: '#e1e1e6', fontFamily: 'Fira Code, monospace', whiteSpace: 'pre-line', overflowY: 'auto', flex: 1, }}>{description}</div>
+          <div style={{ marginTop: '0.5rem', color: '#e1e1e6', fontFamily: 'monospace', fontSize: isMobile ? '12px' : '14px' , whiteSpace: 'pre-line', overflowY: 'auto', flex: 1, }}>{description}</div>
         </div>
 
         {imageUrl && (
@@ -120,8 +121,8 @@ const ProjectCard = ({
 
 
         {/* Tech Stack */}
-        <div style={{ marginBottom: '1rem', padding: isMobile ? '0.75rem' : '1rem', backgroundColor:'#0a0a0a', borderRadius: '4px', boxShadow: '0 0 12px rgba(255, 0, 150, 0.1)', border: '1px solid rgba(255, 0, 150, 0.2)'  }}>
-          <div style={{ color: '#ff2da0', fontFamily: 'Fira Code, monospace' }}>
+        <div style={{ marginBottom: '1rem', padding: isMobile ? '0.5rem' : '1rem', backgroundColor:'#0a0a0a', borderRadius: '4px', boxShadow: '0 0 12px rgba(255, 0, 150, 0.1)', border: '1px solid rgba(255, 0, 150, 0.2)'  }}>
+          <div style={{ color: '#ff2da0', fontFamily: 'monospace', fontSize: isMobile ? '12px' : '14px' }}>
             // Technologies used
           </div>
           <div
@@ -136,12 +137,12 @@ const ProjectCard = ({
               <span
                 key={index}
                 style={{
-                  padding: '0.25rem 0.75rem',
+                  padding: '4px 12px',
                   backgroundColor: '#000',
                   border: '1px solid #f02eaa',
                   borderRadius: '6px',
-                  fontFamily: 'Fira Code, monospace',
-                  fontSize: '0.875rem',
+                  fontFamily: 'monospace',
+                  fontSize: isMobile ? '10px' : '12px',
                   color: '#f02eaa',
                   cursor: 'default',
                   transition: 'background-color 0.2s, color 0.2s',
@@ -162,72 +163,97 @@ const ProjectCard = ({
         </div>
 
         {/* Action Buttons */}
-        <div style={{ display: 'flex', gap: isMobile ? '0.5rem' : '0.75rem', flexDirection: isMobile ? 'column' : 'row' }}>
-          {githubUrl && (
-            <button
-              type="button"
-              style={{
-                border: '1px solid #f02eaa',
-                backgroundColor: 'transparent',
-                color: '#f02eaa',
-                fontFamily: 'Fira Code, monospace',
-                fontSize: '0.875rem',
-                padding: '0.25rem 0.75rem',
-                borderRadius: '6px',
-                cursor: 'pointer',
-                display: 'inline-flex',
-                alignItems: 'center',
-                gap: '0.5rem',
-                transition: 'background-color 0.2s, color 0.2s',
-                textDecoration: 'none',
-              }}
-              onMouseEnter={handleOutlineMouseEnter}
-              onMouseLeave={handleOutlineMouseLeave}
-            >
-              <a
-                href={githubUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                style={{ color: 'inherit', display: 'inline-flex', alignItems: 'center', gap: '0.5rem', textDecoration: 'none' }}
-              >
-                <Github style={{ width: '16px', height: '16px' }} />
-                git clone
-              </a>
-            </button>
-          )}
-          {liveUrl && (
-            <button
-              type="button"
-              style={{
-                backgroundColor: '#ff2da0',
-                color: '#000',
-                fontFamily: 'Fira Code, monospace',
-                fontSize: '0.875rem',
-                padding: '0.25rem 0.75rem',
-                borderRadius: '6px',
-                cursor: 'pointer',
-                display: 'inline-flex',
-                alignItems: 'center',
-                gap: '0.5rem',
-                border: 'none',
-                textDecoration: 'none',
-                transition: 'background-color 0.2s',
-              }}
-              onMouseEnter={handleSolidMouseEnter}
-              onMouseLeave={handleSolidMouseLeave}
-            >
-              <a
-                href={liveUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                style={{ color: 'inherit', display: 'inline-flex', alignItems: 'center', gap: '0.5rem', textDecoration: 'none' }}
-              >
-                <ExternalLink style={{ width: '16px', height: '16px' }} />
-                ./run.sh
-              </a>
-            </button>
-          )}
-        </div>
+        <div style={{ 
+              display: 'flex', 
+              gap: isMobile ? '8px' : '12px', 
+            }}>
+              {githubUrl && (
+                <button
+                  type="button"
+                  style={{
+                    border: '1px solid #f02eaa',
+                    backgroundColor: 'transparent',
+                    color: '#f02eaa',
+                    fontFamily: 'monospace',
+                    fontSize: isMobile ? '12px' : '14px',
+                    padding: isMobile ? '6px 12px' : '8px 16px',
+                    borderRadius: '6px',
+                    cursor: 'pointer',
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    gap: isMobile ? '4px' : '8px',
+                    transition: 'all 0.2s ease',
+                    minWidth: isMobile ? 'auto' : '120px',
+                    height: isMobile ? '32px' : '40px',
+                  }}
+                  onMouseEnter={handleOutlineMouseEnter}
+                  onMouseLeave={handleOutlineMouseLeave}
+                >
+                  <a
+                    href={githubUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    style={{ 
+                      color: 'inherit', 
+                      display: 'inline-flex', 
+                      alignItems: 'center', 
+                      gap: isMobile ? '4px' : '8px', 
+                      textDecoration: 'none',
+                      fontSize: 'inherit',
+                      width: '100%',
+                      justifyContent: 'center'
+                    }}
+                  >
+                    <Github style={{ width: isMobile ? '14px' : '16px', height: isMobile ? '14px' : '16px' }} />
+                    git clone
+                  </a>
+                </button>
+              )}
+              {liveUrl && (
+                <button
+                  type="button"
+                  style={{
+                    backgroundColor: '#ff2da0',
+                    color: '#000',
+                    fontFamily: 'monospace',
+                    fontSize: isMobile ? '12px' : '14px',
+                    padding: isMobile ? '6px 12px' : '8px 16px',
+                    borderRadius: '6px',
+                    cursor: 'pointer',
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    gap: isMobile ? '4px' : '8px',
+                    border: 'none',
+                    transition: 'all 0.2s ease',
+                    minWidth: isMobile ? 'auto' : '120px',
+                    height: isMobile ? '32px' : '40px',
+                  }}
+                  onMouseEnter={handleSolidMouseEnter}
+                  onMouseLeave={handleSolidMouseLeave}
+                >
+                  <a
+                    href={liveUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    style={{ 
+                      color: 'inherit', 
+                      display: 'inline-flex', 
+                      alignItems: 'center', 
+                      gap: isMobile ? '4px' : '8px', 
+                      textDecoration: 'none',
+                      fontSize: 'inherit',
+                      width: '100%',
+                      justifyContent: 'center'
+                    }}
+                  >
+                    <ExternalLink style={{ width: isMobile ? '14px' : '16px', height: isMobile ? '14px' : '16px' }} />
+                    ./run.sh
+                  </a>
+                </button>
+              )}
+          </div>
       </div>
     </div>
   );

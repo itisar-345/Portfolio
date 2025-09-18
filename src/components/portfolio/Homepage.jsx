@@ -8,7 +8,9 @@ import TypewriterText from './TypewriterText';
 import ProjectCard from './ProjectCard';
 import ExperienceTimeline from './ExperienceTimeline';
 import ParticleBackground from './ParticleBackground';
-import CodeSnippet from './CodeSnippet';
+import TerminalSimulator from './TerminalSimulator';
+import SplitTerminal from './SplitTerminal';
+import SystemBootLoader from './SystemBootLoader';
 import MatrixRain from './MatrixRain';
 import Game from '../game/Game';
 import { GameProvider } from '../../context/GameContext';
@@ -18,6 +20,7 @@ import { Mail, Github, Linkedin, Terminal, Code, Coffee, Home, User, Briefcase, 
 import { useIsMobile } from '../../hooks/use-mobile';
 
 const HomePage = () => {
+  const [isLoading, setIsLoading] = useState(true);
   const [activeSection, setActiveSection] = useState('hero');
 
   const handleNavigate = (section) => {
@@ -88,6 +91,9 @@ const HomePage = () => {
 
   const chunkedProjects = chunkArray(projects, chunkSize);
 
+  if (isLoading) {
+    return <SystemBootLoader onBootComplete={() => setIsLoading(false)} />; }
+
   return (
     <div style={{
         minHeight: '100vh',
@@ -106,7 +112,8 @@ const HomePage = () => {
       
       <main style={{ marginLeft: isMobile ? '0' : '4rem', position: 'relative', zIndex: 10 }}>
         {/* Hero Section - Enhanced Terminal Style */}
-        <section id="hero" style={{
+        <section id="hero" 
+          style={{
             minHeight: '100vh',
             display: 'flex',
             flexDirection: 'column',
@@ -121,7 +128,7 @@ const HomePage = () => {
             backgroundColor: '#0a0a0a', 
             borderRadius: '8px',
             color: '#f8f8f2',
-            fontFamily: "'Fira Code', monospace",
+            fontFamily: 'monospace',
             boxShadow: '0 0 12px rgba(255, 0, 150, 0.5)', 
             border: '1px solid rgba(255, 0, 150, 0.6)',
             }}>
@@ -129,7 +136,7 @@ const HomePage = () => {
                 padding: isMobile ? '1rem' : '2rem', 
                 lineHeight: '1.6',
                 whiteSpace: 'pre-wrap',
-                color: '#e1e1e6',
+                color: '#d4d4d4dd',
                 }}>
               {/* Terminal Header */}
               <div style={{
@@ -162,30 +169,16 @@ const HomePage = () => {
                   &lt;RITISA/&gt;
                 </div>
                 
-                <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', gap: isMobile ? '0.5rem' : '1rem', marginBottom: '2rem', flexWrap: 'wrap' }}>
-                  <Code style={{ width: '1.5rem', height: '1.5rem', color: '#f02eaa' }}/>
-                  <span style={{ fontFamily: 'monospace' }}><TypewriterText text="while(alive) {{ eat(); sleep(); code(); repeat(); }"/></span>
-                  <Coffee style={{ width: '1.5rem', height: '1.5rem', color: '#f02eaa' }} />
+                <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', gap: isMobile ? '0.5rem' : '1rem', marginBottom: '2rem', flexWrap: 'wrap'}}>
+                  <Code style={{ width: isMobile ? '1rem' : '1.5rem',  height: isMobile ? '1rem' : '1.5rem', color: '#f02eaa' }}/>
+                  <span style={{ fontFamily: 'monospace', fontSize: isMobile ? '0.8rem' : '1rem', textAlign: 'center' }}><TypewriterText text={isMobile ? "while(alive) { code(); }" : "while(alive) {{ eat(); sleep(); code(); repeat(); }"} speed={isMobile ? 30 : 40}/></span>
+                  <Coffee style={{ width: isMobile ? '1rem' : '1.5rem',  height: isMobile ? '1rem' : '1.5rem', color: '#f02eaa' }} />
                 </div>
               </div>
 
               {/* Code Snippet Display */}
-              <div style={{ margin: isMobile ? '0.5rem' : '1rem', padding: isMobile ? '1rem' : '1.5rem', boxShadow: '0 0 12px rgba(255, 0, 150, 0.2)', border: '1px solid rgba(255, 0, 150, 0.3)'}}>
-                <CodeSnippet 
-                  code={`const developer = {
-                    name: "Ritisa Behera",
-                    location: "Mumbai, India",
-                    languages: ["Python", "Java", "JavaScript", "C", "SQL", "Apex"],
-                    currentFocus: "Software, DevOps & AI Development",
-                    coffeeConsumed: "∞",
-                    linesOfCode: "15000+",
-                    bugs: { 
-                      created: "many", 
-                      fixed: "most" 
-                      }
-                  };`}
-                  language="javascript"
-                />
+              <div style={{ margin: isMobile ? '0.25rem' : '0.5rem', padding: isMobile ? '0.25rem' : '0.5rem', boxShadow: '0 0 12px rgba(255, 0, 150, 0.2)', border: '1px solid rgba(255, 0, 150, 0.3)'}}>
+                <TerminalSimulator />
               </div>
               
               <div style={{ display: 'flex', justifyContent: 'center', gap: isMobile ? '1rem' : '1.5rem', marginBottom: '1rem', flexWrap: 'wrap' }}>
@@ -295,8 +288,8 @@ const HomePage = () => {
           <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: isMobile ? '0.5rem' : '1rem', marginTop: '2rem' }}>
             {[
               { name: 'ABOUT', section: 'about' },
+              { name: 'EXPERIENCE', section: 'experience' }, 
               { name: 'PROJECTS', section: 'projects' },
-              { name: 'EXPERIENCE', section: 'experience' }
             ].map((item) => (
                 <button 
                     key={item.name}
@@ -322,93 +315,76 @@ const HomePage = () => {
         {/* About Section - Enhanced with Code */}
         <section id="about" 
             style={{
-                minHeight: '100vh',
+                minHeight: isMobile ? 'auto' : '100vh',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
                 padding: isMobile ? '2rem 1rem' : '5rem 2rem',
             }}
         >
-          <VSCodeWindow title="developer.config.js" style={{ width: '100%', maxWidth: isMobile ? '100%' : '64rem' }}>
-            <div style={{ display: 'grid', gap: isMobile ? '1rem' : '2rem', gridTemplateColumns: isMobile ? '1fr' : '1fr 1fr' }}>
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
-                <div style={{ padding:'1rem', borderRadius: '4px', backgroundColor:'#0a0a0a', boxShadow: '0 0 12px rgba(255, 0, 150, 0.2)', border: '1px solid rgba(255, 0, 150, 0.3)'}}>
-                <CodeSnippet 
-                  code={`const aboutMe = {
-	passion: "Crafting innovative Full-Stack, Network and AI solutions",
-	focus: "Software, DevOps, Cloud, AI Development",
-	philosophy: "Code with purpose, impact with precision",
-	motivation: "Enhancing lives through technology",
-	favoriteLang: "Java & Python",
-	currentlyLearning: "Advanced LLMs & Cloud Architecture"
-};`}
-                  language="aboutme.js"
-                />
-                </div>
-                <div style={{ padding:'1rem', borderRadius: '4px', backgroundColor:'#0a0a0a', boxShadow: '0 0 12px rgba(255, 0, 150, 0.2)', border: '1px solid rgba(255, 0, 150, 0.3)'}}>
-                <CodeSnippet 
-                  code={`const techStack = {
-
-	Languages & Frameworks: ["Java", "Python", "Javascript", "Apex", "HTML/CSS", "Bootstrap", "React", "Flask",	"Lightning Web Components"],
-
-	Tools & Technologies: ["Git", "Docker", "Kubernetes", "Jenkins", "Selenium", "Scikit-learn", "Pandas", "NLTK", "Langchain", "LLMs"],
-
-	Platform & Database: ["AWS", "Google Cloud", "IBM Cloud", "MySQL", "PostgreSQL", "MongoDB", "Salesforce"],
-  
-};`}
-                  language="techstack.js"
-                />
-                </div>
+          <VSCodeWindow title="developer.config.js" style={{ width: '100%', maxWidth: isMobile ? '100%' : '80rem', margin: isMobile ? '0' : 'auto' }}>
+            {/* About Section - Split Terminal */}
+            <div style={{ textAlign: 'center' }}>
+              <h2
+                style={{
+                    fontSize: isMobile ? '1.5rem' : '1.875rem',
+                    fontWeight: 'bold',
+                    fontFamily: 'monospace',
+                    marginBottom: '1rem',
+                    background: 'linear-gradient(to right, #f02eaa, #4ade80)',
+                    WebkitBackgroundClip: 'text',
+                    color: 'transparent',
+                }}
+              >
+                # About
+              </h2>
+              <p style={{ fontFamily: 'monospace', color: '#d4d4d4dd' }}>$ tail -f /var/log/developer.log</p>
+            </div>
+              <div
+                style={{
+                  width: '100%',
+                  maxWidth: '1280px',
+                  margin: '0 auto',
+                  padding: isMobile ? '0.5rem' : '1rem',
+                }}
+              >
+                <SplitTerminal />
               </div>
-              
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
-                <div 
+        </VSCodeWindow>
+        </section>
+
+        {/* Experience Section */}
+        <section id="experience"
+            style={{
+                minHeight: '100vh',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                padding: isMobile ? '2rem 1rem' : '2rem',
+            }}
+            >
+            <VSCodeWindow title="git log --oneline --graph" style={{ width: '100%', maxWidth: isMobile ? '100%' : '56rem' }}>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
+                <div style={{ textAlign: 'center'}}>
+                    <h2
                     style={{
-                        backgroundColor: '#0a0a0a', // dark editor-like background
-                        borderRadius: '8px',
-                        padding: '16px',
-                        color: '#f8f8f2', // light text color
-                        fontFamily: "'Fira Code', monospace",
-                        boxShadow: '0 0 12px rgba(255, 0, 150, 0.5)', // neon magenta glow
-                        border: '1px solid rgba(255, 0, 150, 0.6)', // subtle magenta border
-                    }}>
-                <div style={{ padding: '1rem' }}>
-                    <div style={{ color: '#f02eaa', fontFamily: 'monospace', marginBottom: '1rem' }}>$ neofetch</div>
-                    <div style={{ fontFamily: 'monospace', fontSize: '0.875rem', lineHeight: '1.5', display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
-                    <div><span style={{ color: '#f02eaa' }}>email:</span> ritisarabindra@gmail.com</div>
-                    <div><span style={{ color: '#f02eaa' }}>github:</span> "github.com/itisar-345"</div>
-                    <div><span style={{ color: '#f02eaa' }}>linkedin:</span> "linkedin.com/in/ritisa-behera-43819b258/"</div>
-                    <div><span style={{ color: '#f02eaa' }}>location:</span> "India"</div>
-                    <div><span style={{ color: '#f02eaa' }}>timezone:</span> "UTC+5:30"</div>
-                    <div><span style={{ color: '#f02eaa' }}>status:</span> "available for work"</div>
-                    </div>
-                </div>
+                        fontSize: '1.875rem',
+                        fontWeight: 'bold',
+                        fontFamily: 'monospace',
+                        marginBottom: '1rem',
+                        background: 'linear-gradient(to right, #f02eaa, #4ade80)',
+                        WebkitBackgroundClip: 'text',
+                        color: 'transparent',
+                    }}
+                    >
+                    # Experience Timeline
+                    </h2>
+                    <p style={{ fontFamily: 'monospace', color: '#d4d4d4' }}>$ git log --author="Ritisa" --pretty=online</p>
                 </div>
 
-                <div 
-                    style={{
-                        backgroundColor: '#0a0a0a', // dark editor-like background
-                        borderRadius: '8px',
-                        padding: '16px',
-                        color: '#f8f8f2', // light text color
-                        fontFamily: "'Fira Code', monospace",
-                        boxShadow: '0 0 12px rgba(255, 0, 150, 0.5)', // neon magenta glow
-                        border: '1px solid rgba(255, 0, 150, 0.6)', // subtle magenta border
-                    }}>
-                <div style={{ padding: '1rem' }}>
-                    <div style={{ color: '#f02eaa', fontFamily: 'monospace', marginBottom: '1rem' }}>$ ps aux | grep interests</div>
-                    <div style={{ fontFamily: 'monospace', fontSize: '0.875rem', lineHeight: '1.5', display: 'flex', flexDirection: 'column', gap: '0.25rem' }}>
-                    <div>full_stack_dev         95%   [running]</div>
-                    <div>machine_learning       85%   [running]</div>
-                    <div>cloud_technologies     80%   [running]</div>
-                    <div>project_management     75%   [learning]</div>
-                    <div>salesforce_dev         60%   [running]</div>
-                    </div>
+                <ExperienceTimeline experiences={experiences} />
                 </div>
-                </div>
-            </div>
-            </div>
-        </VSCodeWindow>
+            </VSCodeWindow>
         </section>
 
         {/* Projects Section - Enhanced with Code */}
@@ -419,6 +395,7 @@ const HomePage = () => {
                 alignItems: 'center',
                 justifyContent: 'center',
                 padding: isMobile ? '2rem 1rem' : '5rem 2rem',
+                fontFamily: 'monospace',
             }}>
           <div style={{ width: '100%', maxWidth: isMobile ? '100%' : '72rem' }}>
             <VSCodeWindow title="projects/README.md" style={{ marginBottom: '2rem' }}>
@@ -436,7 +413,7 @@ const HomePage = () => {
                 >
                 # Featured Projects
                 </h2>
-                <p style={{ fontFamily: 'monospace', color: '#d4d4d4' }}>$ ls -la ~/projects/featured/</p>
+                <p style={{ fontFamily: 'monospace', color: '#d4d4d4dd' }}>$ ls -la ~/projects/featured/</p>
             </div>
 
             <div style={{
@@ -535,40 +512,6 @@ const HomePage = () => {
         </div>
         </section>
 
-        {/* Experience Section */}
-        <section
-            id="experience"
-            style={{
-                minHeight: '100vh',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                padding: isMobile ? '2rem 1rem' : '2rem',
-            }}
-            >
-            <VSCodeWindow title="git log --oneline --graph" style={{ width: '100%', maxWidth: isMobile ? '100%' : '56rem' }}>
-                <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
-                <div style={{ textAlign: 'center'}}>
-                    <h2
-                    style={{
-                        fontSize: '1.875rem',
-                        fontWeight: 'bold',
-                        fontFamily: 'monospace',
-                        marginBottom: '1rem',
-                        background: 'linear-gradient(to right, #f02eaa, #4ade80)',
-                        WebkitBackgroundClip: 'text',
-                        color: 'transparent',
-                    }}
-                    >
-                    # Experience Timeline
-                    </h2>
-                    <p style={{ fontFamily: 'monospace', color: '#d4d4d4' }}>$ git log --author="Ritisa" --pretty=online</p>
-                </div>
-
-                <ExperienceTimeline experiences={experiences} />
-                </div>
-            </VSCodeWindow>
-        </section>
       </main>
     </div>
   );

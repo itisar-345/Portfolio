@@ -16,8 +16,8 @@ const Navigation = ({ activeSection, onNavigate }) => {
   const navItems = [
     { id: 'hero', label: 'Home', icon: Home, command: 'cd ~' },
     { id: 'about', label: 'About', icon: User, command: 'whoami' },
-    { id: 'projects', label: 'Projects', icon: Code, command: 'ls -la' },
     { id: 'experience', label: 'Experience', icon: Briefcase, command: 'git log' },
+    { id: 'projects', label: 'Projects', icon: Code, command: 'ls -la' },
   ];
 
   return (

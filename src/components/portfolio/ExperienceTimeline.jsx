@@ -14,7 +14,7 @@ const ExperienceTimeline = ({ experiences }) => {
               backgroundColor: '#0a0a0a',
               padding: isMobile ? '12px' : '16px',
               borderRadius: '8px',
-              fontFamily: "'Fira Code', monospace",
+              fontFamily: 'monospace',
               color: '#e1e1e6',
               boxShadow: '0 0 12px rgba(255, 0, 150, 0.15)',
               border: '1px solid rgba(255, 0, 150, 0.3)',
@@ -36,7 +36,7 @@ const ExperienceTimeline = ({ experiences }) => {
               <div
                 style={{
                   color: '#999',
-                  fontSize: '0.875rem',
+                  fontSize: isMobile ? '14px' : '16px',
                   display: 'flex',
                   alignItems: 'center',
                 }}
@@ -52,7 +52,7 @@ const ExperienceTimeline = ({ experiences }) => {
                 paddingLeft: isMobile ? '12px' : '16px',
               }}
             >
-              <h3 style={{ fontSize: '1.125rem', fontWeight: '600', color: '#e1e1e6' }}>
+              <h3 style={{ fontSize: isMobile ? '16px' : '18px', fontWeight: '600', color: '#e1e1e6' }}>
                 {exp.position}
               </h3>
 
@@ -62,7 +62,7 @@ const ExperienceTimeline = ({ experiences }) => {
                   alignItems: 'center',
                   color: '#999',
                   marginBottom: '8px',
-                  fontSize: isMobile ? '0.75rem' : '0.875rem',
+                  fontSize: isMobile ? '12px' : '14px',
                   flexWrap: 'wrap',
                   gap: isMobile ? '4px' : '0',
                 }}
@@ -72,14 +72,14 @@ const ExperienceTimeline = ({ experiences }) => {
                 <span>{exp.location}</span>
               </div>
 
-              <ul style={{ marginBottom: '12px' }}>
+              <div style={{ margin: '12px' }}>
                 {exp.description.map((desc, i) => (
-                  <li key={i} style={{ color: '#e1e1e6', fontSize: '0.875rem', marginBottom: '4px' }}>
-                    <span style={{ color: '#22c55e', marginRight: '8px' }}>+</span>
+                  <div key={i} style={{ color: '#e1e1e6', fontSize: isMobile ? '12px':'14px', marginBottom: '8px' }}>
+                    <span style={{ color: '#22c55e', fontSize: isMobile ? '14px':'18px', marginRight: '10px' }}>+</span>
                     {desc}
-                  </li>
+                  </div>
                 ))}
-              </ul>
+              </div>
 
               <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px', marginBottom: exp.documents ? '12px' : '0' }}>
                 {exp.technologies.map((tech, i) => (
@@ -88,10 +88,10 @@ const ExperienceTimeline = ({ experiences }) => {
                     style={{
                       padding: '4px 8px',
                       backgroundColor: '#1e1e1e',
-                      border: '1px solid #333',
+                      border: '1px solid #d4d4d4dd',
                       borderRadius: '4px',
                       fontSize: '0.75rem',
-                      color: '#999',
+                      color: '#ffffff',
                     }}
                   >
                     {tech}
