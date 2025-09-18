@@ -1,8 +1,8 @@
 export const projects = [
     {
       title: "E-Commerce Platform",
-      description: "• Comprehensive e-commerce platform with Spring Boot + React and PHP implementations\n• Supports multi-role functionality for customers and vendors\n• Features product management, cart, order processing, and analytics\n• Secure JWT-based authentication and role-based access control\n• Responsive UI with Tailwind CSS and TypeScript",
-      techStack: ["Spring Boot", "React", "TypeScript", "MySQL", "JWT", "Tailwind CSS", "PHP", "JavaScript"],
+      description: "• Comprehensive e-commerce platform with two distinct implementation styles\n• Supports multi-role functionality for customers and vendors\n• Features product management, cart, order processing, and analytics\n• Secure authentication and role-based access control",
+      techStack: ["Spring Boot", "Maven","JWT", "RESTful API", "React", "MySQL", "TypeScript", "Tailwind"],
       githubUrl: "https://github.com/itisar-345/E-commerce-Project/",
       imageUrl: "/ecommerce.png"
     },
@@ -43,15 +43,15 @@ export const experiences = [
     {
       id: "e3",
       company: "Home First Finance Company",
-      position: "SDE Intern",
+      position: "Software Engineer Intern",
       location: "Mumbai, India",
       startDate: "2025-06",
       endDate: "2025-08",
       description: [
-        "Contributed to the design and implementation of end-to-end loan processing workflows, including lead capture, application submission, document verification, underwriting, disbursement, and closure.",
-        "Demonstrated strong problem-solving skills and hands-on Salesforce development (Flows, Apex, LWC, and integrations with third-party APIs) in a real-time, team-driven project.", 
-        "Worked proactively, adapted quickly to dynamic workflows across teams, and effectively collaborated for transparent project execution."
-],
+        "Designed and implemented end-to-end loan processing workflows including lead capture, application submission, document verification, underwriting, disbursement, and closure",
+        "Developed Salesforce components and integrated third-party APIs to enable seamless data exchange and automation",
+        "Collaborated in a real-time team environment to deliver a scalable and user-friendly loan origination system"
+      ],
       technologies: ["Salesforce", "Apex", "Lightning Web Components", "Screen Flows", "JavaScript"],
       documents: [
         { name: "Internship Completion Certificate", url: "/documents/HFFC-completion.pdf" },
@@ -66,11 +66,11 @@ export const experiences = [
       startDate: "2024-06",
       endDate: "2024-07",
       description: [
-        "Developed an AI chatbot using IBM Watson Assistant for cardiovascular risk prediction",
-        "Trained and deployed a machine learning model using the Framingham dataset",
-        "Enabled real-time predictions to enhance user interaction and risk awareness"
+        "Developed an AI chatbot that delivers personalized cardiovascular risk assessments based on user input, using insights from the Framingham dataset",
+        "Trained and deployed a predictive model to enable real-time interaction and 10-year CHD risk evaluation, enhancing user awareness and engagement",
+        "Explored multiple machine learning pipelines and selected the most effective approach to achieve 90% accuracy, demonstrating clinical relevance and reliability"
       ],
-      technologies: ["Python", "IBM Watson", "Scikit-learn", "NLP", "Pipelines", "APIs", "Twilio"],
+      technologies: ["Python", "IBM Watson", "IBM Cloud", "Pipelines", "APIs", "Twilio"],
       documents: [
         { name: "Internship Completion Certificate", url: "/documents/Edunet-completion.pdf" }
       ]
@@ -87,7 +87,7 @@ export const experiences = [
       "Implemented secure authentication mechanisms and enabled role-based access for customers and vendors",
       "Collaborated with a team to troubleshoot issues, enhance features, and gain hands-on experience in web development processes"
       ],
-      technologies: ["PHP", "HTML", "CSS", "JavaScript", "MySQL"],
+      technologies: ["HTML", "CSS", "PHP", "JavaScript", "MySQL"],
       documents: [
         { name: "Internship Completion Certificate", url: "/documents/Acmegrade-completion.pdf" }
       ]

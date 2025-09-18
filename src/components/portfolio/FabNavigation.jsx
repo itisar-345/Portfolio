@@ -23,8 +23,8 @@ const FabNavigation = ({ onNavigate }) => {
   const actions = [
     { id: 'hero', label: 'Home', icon: <Home size={18} /> },
     { id: 'about', label: 'About', icon: <User size={18} /> },
-    { id: 'projects', label: 'Projects', icon: <Code size={18} /> },
     { id: 'experience', label: 'Experience', icon: <Briefcase size={18} /> },
+    { id: 'projects', label: 'Projects', icon: <Code size={18} /> },
   ];
 
   if (!isMobile) return null;
