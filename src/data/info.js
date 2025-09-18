@@ -2,7 +2,7 @@ export const projects = [
     {
       title: "E-Commerce Platform",
       description: "• Comprehensive e-commerce platform with two distinct implementation styles\n• Supports multi-role functionality for customers and vendors\n• Features product management, cart, order processing, and analytics\n• Secure JWT-based authentication and role-based access control\n• Responsive UI with Tailwind CSS and TypeScript",
-      techStack: ["Spring Boot", "Maven", "React", "TypeScript", "MySQL", "JWT", "Tailwind", "PHP", "JavaScript"],
+      techStack: ["Spring Boot", "Maven", "RESTful", "JWT", "React", "TypeScript", "MySQL", "Tailwind", "PHP", "JavaScript"],
       githubUrl: "https://github.com/itisar-345/E-commerce-Project/",
       imageUrl: "/ecommerce.png"
     },
