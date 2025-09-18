@@ -27,9 +27,9 @@ const SplitTerminal = () => {
     { id: '9', text: 'Phone: +91 8104794060', delay: 0, type: 'info', link: 'tel:+918104794060', icon: Phone },
     { id: '10', text: '', delay: 10 },
     { id: '11', text: '$ cat /etc/goals.conf', delay: 10 },
-    { id: '12', text: '● Design & build scalable AI solutions"', delay: 15 },
-    { id: '13', text: '● Contribute to open source & research"', delay: 15 },
-    { id: '14', text: '● Advanced ML, DevOps & System Design"', delay: 15 },
+    { id: '12', text: '● Design & build scalable AI solutions', delay: 15 },
+    { id: '13', text: '● Contribute to open source & research', delay: 15 },
+    { id: '14', text: '● Advanced ML, DevOps & System Design', delay: 15 },
     { id: '15', text: '', delay: 10 },
     { id: '16', text: '$ systemctl is-active readiness', delay: 15 },
     { id: '17', text: '[SUCCESS] Open to onsite/remote/hybrid roles', delay: 20, type: 'success'},
@@ -160,7 +160,7 @@ const SplitTerminal = () => {
           padding: '0.75rem',
           borderBottom: '1px solid rgba(240,46,170,0.3)'
         }}>
-          <span style={{ color: '#f02eaa', fontFamily: 'monospace', fontSize: isMobile ? '13px' : '16px' }}>system-status.log</span>
+          <span style={{ color: '#f02eaa', fontFamily: 'monospace', fontSize: isMobile ? '14px' : '16px' }}>system-status.log</span>
           <div style={{ display: 'flex', gap: '0.5rem' }}>
             <div style={{ width: '12px', height: '12px', borderRadius: '50%', backgroundColor: '#ef4444' }} />
             <div style={{ width: '12px', height: '12px', borderRadius: '50%', backgroundColor: '#facc15' }} />
@@ -173,7 +173,7 @@ const SplitTerminal = () => {
           style={{ 
             padding: '1rem', 
             fontFamily: 'monospace', 
-            fontSize: isMobile ? '13px' : '14px' , 
+            fontSize: isMobile ? '12px' : '14px' , 
             color: '#d4d4d4', 
             flexGrow: 1, 
             overflowY: 'auto',
@@ -245,7 +245,7 @@ const SplitTerminal = () => {
           padding: '0.75rem',
           borderBottom: '1px solid rgba(240,46,170,0.3)'
         }}>
-          <span style={{ color: '#f02eaa', fontFamily: 'monospace', fontSize: isMobile ? '13px' : '16px'  }}>tech-stack.log</span>
+          <span style={{ color: '#f02eaa', fontFamily: 'monospace', fontSize: isMobile ? '14px' : '16px'  }}>tech-stack.log</span>
           <div style={{ display: 'flex', gap: '0.5rem' }}>
             <div style={{ width: '12px', height: '12px', borderRadius: '50%', backgroundColor: '#ef4444' }} />
             <div style={{ width: '12px', height: '12px', borderRadius: '50%', backgroundColor: '#facc15' }} />
@@ -258,7 +258,7 @@ const SplitTerminal = () => {
           style={{ 
             padding: '1rem', 
             fontFamily: 'monospace', 
-            fontSize: isMobile ? '13px' : '14px' , 
+            fontSize: isMobile ? '12px' : '14px' , 
             color: '#d4d4d4', 
             flexGrow: 1, 
             overflowY: 'auto',
