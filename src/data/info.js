@@ -1,7 +1,7 @@
 export const projects = [
     {
       title: "E-Commerce Platform",
-      description: "• Comprehensive e-commerce platform with two distinct implementation styles\n• Supports multi-role functionality for customers and vendors\n• Features product management, cart, order processing, and analytics\n• Secure JWT-based authentication and role-based access control\n• Responsive UI with Tailwind CSS and TypeScript",
+      description: "• Comprehensive e-commerce platform with two distinct implementation styles\n• Supports multi-role functionality for customers and vendors\n• Features product management, cart, order processing, and analytics\n• Secure JWT-based authentication and role-based access control",
       techStack: ["Spring Boot", "Maven", "RESTful", "JWT", "React", "TypeScript", "MySQL", "Tailwind", "PHP", "JavaScript"],
       githubUrl: "https://github.com/itisar-345/E-commerce-Project/",
       imageUrl: "/ecommerce.png"
@@ -17,7 +17,7 @@ export const projects = [
     {
       title: "Invoice Data Extractor",
       description: "• Lightweight Windows desktop app (.exe) for data extraction\n• Extracts data from PDF/JPG invoices with over 95% accuracy\n• Uses OCR, Gemini (Generative AI), and smart processing\n• Supports multi-file processing and user-defined storage\n• Standardized output for seamless client integration",
-      techStack: ["Python", "OCR", "Gemini", "LLMs"],
+      techStack: ["Electron", "Python", "OCR", "Gemini", "LLMs"],
       githubUrl: "https://github.com/Cherry28831/Invoice-Data-Extractor/releases/tag/v1.0.0",
       imageUrl: "/invoiceextractor.jpeg"
     },
