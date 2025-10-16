@@ -1,5 +1,12 @@
 export const projects = [
     {
+      title: "Sentinel AI",
+      description: "• Real-time DDoS detection system for 5G network slices using ML and SDN\n• Dual-mode traffic monitoring with slice-level threat classification\n• Full-stack architecture with autonomous detection, IP reputation checks, and live threat visualization\n• In-progress self-healing mechanisms for dynamic mitigation",
+      techStack: ["React", "Node.js", "Python", "Flask", "Scikit-learn", "SDN", "Docker", "Kubernetes", "GraphQL", "PostgreSQL"],
+      githubUrl: "https://github.com/Akshita3104/SentinelAi",
+      imageUrl: "/sentinelai.png"
+    },
+    {
       title: "E-Commerce Platform",
       description: "• Comprehensive e-commerce platform with two distinct implementation styles\n• Supports multi-role functionality for customers and vendors\n• Features product management, cart, order processing, and analytics\n• Secure JWT-based authentication and role-based access control",
       techStack: ["Spring Boot", "Maven", "RESTful", "JWT", "React", "TypeScript", "MySQL", "Tailwind", "PHP", "JavaScript"],
