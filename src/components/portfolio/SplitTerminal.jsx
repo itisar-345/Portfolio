@@ -21,7 +21,7 @@ const SplitTerminal = () => {
     { id: '3', text: '', delay: 10 },
     { id: '4', text: '$ cat /home/ritisa/.contact', delay: 10 },
     { id: '5', text: 'Email: ritisarabindra@gmail.com', delay: 0, type: 'info', link: 'mailto:ritisarabindra@gmail.com', icon: Mail },
-    { id: '6', text: 'LinkedIn: linkedin.com/in/ritisa-behera-43819b258', delay: 0, type: 'info', link: 'https://linkedin.com/in/ritisa-behera-43819b258', icon: Linkedin },
+    { id: '6', text: 'LinkedIn: linkedin.com/in/ritisa-behera', delay: 0, type: 'info', link: 'https://linkedin.com/in/ritisa-behera', icon: Linkedin },
     { id: '7', text: 'GitHub: github.com/itisar-345', delay: 0, type: 'info', link: 'https://github.com/itisar-345', icon: Github },
     { id: '8', text: 'LeetCode: leetcode.com/u/ritisa-345', delay: 0, type: 'info', link: 'https://leetcode.com/u/ritisa-345', icon: Code },
     { id: '9', text: 'Phone: +91 8104794060', delay: 0, type: 'info', link: 'tel:+918104794060', icon: Phone },
