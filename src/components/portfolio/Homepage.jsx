@@ -2,9 +2,7 @@ import { useMemo, useState } from 'react';
 import ProjectCard from './ProjectCard';
 import StatsTab from './StatsTab';
 import ContactTab from './ContactTab';
-
 import { projects, experiences } from '../../data/info';
-
 import ExperienceTimeline from './ExperienceTimeline';
 import { useIsMobile } from '../../hooks/usemobile';
 import { useDeveloperStats } from '../../hooks/usestats';

@@ -1,4 +1,4 @@
-import { Calendar, MapPin, GitCommit, User, Star, GitBranch, Paperclip, ScrollText } from 'lucide-react';
+import { Calendar, GitBranch, GitCommit,Paperclip, ScrollText, Star, MapPin, FileText, ExternalLink } from 'lucide-react';
 
 const ExperienceTimeline = ({ experiences }) => {
   const getCommitType = (type) => {
