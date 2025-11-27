@@ -4,11 +4,16 @@ My personal website showcasing my journey as a Software Developer, built with Re
 
 ## ✨ Features
 
-### 🎮 Interactive Game
-- **Gem Collection Game**: Navigate through a 2D world collecting gems representing skills, projects, and achievements
-- **16 Collectible Gems**: Each gem tells a story about my development journey
-- **Persistent Progress**: Game state saves automatically
-- **Completion Rewards**: Unlock special content after collecting all gems
+### 🛰️ GitHub-Style Developer Hub
+- **Pinned repositories, contribution graph, and activity feed** inspired by GitHub’s profile layout
+- **Tab-based navigation** for overview, projects, stats, experience, and contact sections
+- **Full Projects tab** showcasing rich VS Code–style cards for every build
+
+### 📡 Realtime Developer Telemetry
+- **GitHub Status**: Followers, public repositories, and last activity via the official GitHub API
+- **LeetCode Stats**: Live solve counts, ranking, and difficulty breakdown through a public stats API
+- **WakaTime Pulse**: Latest coding hours and top languages using WakaTime share links
+- **Dedicated Stats tab** that centralizes tech mix, impact snapshot, and contributions heatmap
 
 ### 🎙️ Voice Navigation
 - **Voice Commands**: Navigate sections using voice ("go to projects", "go to about")
@@ -63,11 +68,6 @@ npm run preview
 ```
 src/
 ├── components/
-│   ├── game/              # Game-related components
-│   │   ├── Game.jsx       # Main game component
-│   │   ├── Player.jsx     # Player character
-│   │   ├── Terrain.jsx    # Game terrain
-│   │   └── ...
 │   └── portfolio/         # Portfolio components
 │       ├── Homepage.jsx   # Main homepage
 │       ├── VoiceAssistant.jsx
@@ -86,17 +86,22 @@ src/
     └── terrainGenerator.js
 ```
 
-## 🎮 Game Controls
-
-- **Arrow Keys**: Move player character
-- **Mouse/Touch**: Navigate UI elements
-- **Voice Commands**: Section navigation
-- **Collision Detection**: Automatic gem collection
-
 ## 🔧 Configuration
 
 ### Environment Setup
-No environment variables required for basic setup.
+Create a `.env` file (or set environment variables) to unlock live developer stats:
+
+| Variable | Description |
+| --- | --- |
+| `VITE_GITHUB_USERNAME` | GitHub username to hydrate stats (default: `itisar-345`) |
+| `VITE_GITHUB_API_TOKEN` | Optional; increases GitHub rate limits |
+| `VITE_LEETCODE_USERNAME` | LeetCode handle for real-time problem stats |
+| `VITE_LEETCODE_API_URL` | Public API endpoint that proxies LeetCode stats (default: `https://leetcode-stats-api.herokuapp.com`) |
+| `VITE_WAKATIME_SHARE_URL` | Share link from [WakaTime → Share → JSON], e.g. `https://wakatime.com/share/@user/abcdef12-3456-7890.json` |
+
+All fields are optional—configure the ones you want to display.
+
+### Voice Commands
 
 ### Voice Commands
 Supported commands:

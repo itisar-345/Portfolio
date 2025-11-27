@@ -3,15 +3,8 @@ export const projects = [
       title: "Sentinel AI",
       description: "• Real-time DDoS detection system for 5G network slices using ML and SDN\n• Dual-mode traffic monitoring with slice-level threat classification\n• Full-stack architecture with autonomous detection, IP reputation checks, and live threat visualization\n• In-progress self-healing mechanisms for dynamic mitigation",
       techStack: ["React", "Node.js", "Python", "Flask", "SDN", "Docker", "Tshark", "ML"],
-      githubUrl: "https://github.com/Akshita3104/SentinelAi",
+      githubUrl: "https://github.com/itisar-345/Sentinel-AI",
       imageUrl: "/sentinelai.png"
-    },
-    {
-      title: "E-Commerce Platform",
-      description: "• Comprehensive e-commerce platform with two distinct implementation styles\n• Supports multi-role functionality for customers and vendors\n• Features product management, cart, order processing, and analytics\n• Secure JWT-based authentication and role-based access control",
-      techStack: ["Spring Boot", "Maven", "RESTful", "JWT", "React", "TypeScript", "MySQL", "Tailwind", "PHP", "JavaScript"],
-      githubUrl: "https://github.com/itisar-345/E-commerce-Project/",
-      imageUrl: "/ecommerce.png"
     },
     {
       title: "AI Resume Scanner",
@@ -25,8 +18,16 @@ export const projects = [
       title: "Invoice Data Extractor",
       description: "• Lightweight Windows desktop app (.exe) for data extraction\n• Extracts data from PDF/JPG invoices with over 95% accuracy\n• Uses OCR, Gemini (Generative AI), and smart processing\n• Supports multi-file processing and user-defined storage\n• Standardized output for seamless client integration",
       techStack: ["Electron", "Python", "OCR", "Gemini", "LLMs"],
-      githubUrl: "https://github.com/Cherry28831/Invoice-Data-Extractor/releases/tag/v1.0.0",
+      githubUrl: "https://github.com/Cherry28831/Invoice-Data-Extractor",
+      liveUrl: "https://github.com/Cherry28831/Invoice-Data-Extractor/releases/tag/v1.0.0",
       imageUrl: "/invoiceextractor.jpeg"
+    },
+    {
+      title: "E-Commerce Platform",
+      description: "• Comprehensive e-commerce platform with two distinct implementation styles\n• Supports multi-role functionality for customers and vendors\n• Features product management, cart, order processing, and analytics\n• Secure JWT-based authentication and role-based access control",
+      techStack: ["Spring Boot", "Maven", "RESTful", "JWT", "React", "TypeScript", "MySQL", "Tailwind", "PHP", "JavaScript"],
+      githubUrl: "https://github.com/itisar-345/E-commerce-Project/",
+      imageUrl: "/ecommerce.png"
     },
     {
       title: "Diabetes Check Web App",
@@ -48,10 +49,11 @@ export const projects = [
 
 export const experiences = [
     {
-      id: "e3",
+      id: "e4",
       company: "Home First Finance Company",
       position: "Software Engineer Intern",
       location: "Mumbai, India",
+      type: "Internship",
       startDate: "2025-06",
       endDate: "2025-08",
       description: [
@@ -66,10 +68,11 @@ export const experiences = [
       ]
     },
     {
-      id: "e2",
+      id: "e3",
       company: "Edunet Foundation",
       position: "AI Intern",
       location: "Remote",
+      type: "Internship",
       startDate: "2024-06",
       endDate: "2024-07",
       description: [
@@ -83,10 +86,27 @@ export const experiences = [
       ]
     },
     {
+      id: "e2",
+      company: "Somaiya Machine Learning & Research Association",
+      position: "Team Lead",
+      location: "KJ Somaiya College of Engineering, Mumbai",
+      type: "Leadership",
+      startDate: "2023-08",
+      endDate: "2025-05",
+      description: [
+        "Spearheaded 10+ guest lectures, hands-on workshops, and webinars featuring industry experts and academicians, covering AI/ML fundamentals, research strategies and career guidance",
+        "Facilitated interactive sessions on production-ready AI models, real-world applications, and industry expectations",
+        "Organized expert-led Q&A and networking opportunities to bridge academia and professional AI/ML roles",
+        "Drafted and maintained all official organizational documents while providing structured governance and record-keeping for the community",
+      ],
+      technologies: ["Python", "PyTorch", "TensorFlow", "Scikit-learn", "Flask", "ML/DL", "LLMs", "Reinforcement Learning"]
+    },
+    {
       id: "e1",
       company: "Acmegrade",
-      position: "Web Development Intern",
+      position: "Web Developer Intern",
       location: "Remote",
+      type: "Internship",
       startDate: "2023-04",
       endDate: "2023-06",
       description: [
@@ -98,5 +118,5 @@ export const experiences = [
       documents: [
         { name: "Internship Completion Certificate", url: "/documents/Acmegrade-completion.pdf" }
       ]
-      }
+    },
 ];

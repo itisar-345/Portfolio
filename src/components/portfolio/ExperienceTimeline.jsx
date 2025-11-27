@@ -1,160 +1,107 @@
-import { Calendar, MapPin, FileText, ExternalLink } from 'lucide-react';
-import { useIsMobile } from '../../hooks/use-mobile';
+import { Calendar, MapPin, GitCommit, User, Star, GitBranch, Paperclip, ScrollText } from 'lucide-react';
 
 const ExperienceTimeline = ({ experiences }) => {
-  const isMobile = useIsMobile();
+  const getCommitType = (type) => {
+    switch(type) {
+      case 'Internship': return 'init';
+      case 'Leadership': return 'feat';
+      case 'Full-Time': return 'release';
+      default: return 'feat';
+    }
+  };
+
+  const groupedExperiences = experiences.reduce((acc, exp) => {
+    const type = exp.type || 'Full-Time';
+    if (!acc[type]) acc[type] = [];
+    acc[type].push(exp);
+    return acc;
+  }, {});
+
+  const typeOrder = ['Full-Time', 'Internship', 'Leadership'];
+  const orderedTypes = typeOrder.filter(type => groupedExperiences[type]);
+
+  const renderCommitContainer = (type, exps) => (
+    <div key={type} className="commits-container">
+      <div className="commits-header">
+        <GitCommit size={16} />
+        <span>{exps.length} {type.toLowerCase()} commits</span>
+      </div>
+      
+      {exps.map((exp) => (
+        <details key={exp.id} className="commit-detail">
+          <summary className="commit-row">
+            <div className="commit-message-section">
+              <span className="commit-type">{getCommitType(type)}:</span>
+              <span className="commit-title">{exp.position}</span>
+              <span className="commit-scope">@ {exp.company}</span>
+            </div>
+            
+            <div className="commit-meta-section">
+              <span className="commit-hash">{exp.id.substring(0, 7)}</span>
+              <span className="commit-time">{exp.startDate} - {exp.endDate}</span>
+            </div>
+          </summary>
+          
+          <div className="commit-diff">
+            <div className="diff-header">
+              <span className="diff-stats">+{exp.description.length} additions, +{exp.technologies.length} files</span>
+              <span className="diff-location">
+                <MapPin size={12} />
+                {exp.location}
+              </span>
+            </div>
+            
+            <div className="diff-content">
+              {exp.description.map((desc, i) => (
+                <div key={i} className="diff-line added">
+                  <span className="line-number">+{i + 1}</span>
+                  <span className="line-content">{desc}</span>
+                </div>
+              ))}
+            </div>
+            
+            <div className="diff-files">
+              <div className="file-header">Technologies & Tools:</div>
+              <div className="file-list">
+                {exp.technologies.map((tech, i) => (
+                  <span key={i} className="file-item">{tech}</span>
+                ))}
+              </div>
+            </div>
+            
+            {exp.documents && (
+              <div className="commit-assets">
+                <div className="assets-header"><Paperclip size={12}/> Attachments:</div>
+                {exp.documents.map((doc, i) => (
+                  <a key={i} href={doc.url} target="_blank" rel="noreferrer" className="asset-link">
+                    <ScrollText size={12}/> {doc.name}
+                  </a>
+                ))}
+              </div>
+            )}
+          </div>
+        </details>
+      ))}
+    </div>
+  );
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: isMobile ? '16px' : '24px' }}>
-      {experiences.map((exp, index) => (
-        <div key={exp.id} style={{ position: 'relative' }}>
-          {/* Git log style header */}
-          <div
-            style={{
-              backgroundColor: '#0a0a0a',
-              padding: isMobile ? '12px' : '16px',
-              borderRadius: '8px',
-              fontFamily: 'monospace',
-              color: '#e1e1e6',
-              boxShadow: '0 0 12px rgba(255, 0, 150, 0.15)',
-              border: '1px solid rgba(255, 0, 150, 0.3)',
-            }}
-          >
-            <div
-              style={{
-                display: 'flex',
-                alignItems: isMobile ? 'flex-start' : 'center',
-                justifyContent: 'space-between',
-                marginBottom: '8px',
-                flexDirection: isMobile ? 'column' : 'row',
-                gap: isMobile ? '4px' : '0',
-              }}
-            >
-              <div style={{ color: '#f02eaa', fontWeight: '600' }}>
-                commit {exp.id.substring(0, 8)}
-              </div>
-              <div
-                style={{
-                  color: '#999',
-                  fontSize: isMobile ? '14px' : '16px',
-                  display: 'flex',
-                  alignItems: 'center',
-                }}
-              >
-                <Calendar style={{ width: '16px', height: '16px', marginRight: '4px' }} />
-                {exp.startDate} - {exp.endDate}
-              </div>
-            </div>
-
-            <div
-              style={{
-                borderLeft: '2px solid #f02eaa',
-                paddingLeft: isMobile ? '12px' : '16px',
-              }}
-            >
-              <h3 style={{ fontSize: isMobile ? '16px' : '18px', fontWeight: '600', color: '#e1e1e6' }}>
-                {exp.position}
-              </h3>
-
-              <div
-                style={{
-                  display: 'flex',
-                  alignItems: 'center',
-                  color: '#999',
-                  marginBottom: '8px',
-                  fontSize: isMobile ? '12px' : '14px',
-                  flexWrap: 'wrap',
-                  gap: isMobile ? '4px' : '0',
-                }}
-              >
-                <span style={{ color: '#f02eaa' }}>{exp.company}</span>
-                <MapPin style={{ width: '16px', height: '16px', margin: '0 8px' }} />
-                <span>{exp.location}</span>
-              </div>
-
-              <div style={{ margin: '12px' }}>
-                {exp.description.map((desc, i) => (
-                  <div key={i} style={{ color: '#e1e1e6', fontSize: isMobile ? '12px':'14px', marginBottom: '8px' }}>
-                    <span style={{ color: '#22c55e', fontSize: isMobile ? '14px':'18px', marginRight: '10px' }}>+</span>
-                    {desc}
-                  </div>
-                ))}
-              </div>
-
-              <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px', marginBottom: exp.documents ? '12px' : '0' }}>
-                {exp.technologies.map((tech, i) => (
-                  <span
-                    key={i}
-                    style={{
-                      padding: '4px 8px',
-                      backgroundColor: '#1e1e1e',
-                      border: '1px solid #d4d4d4dd',
-                      borderRadius: '4px',
-                      fontSize: '0.75rem',
-                      color: '#ffffff',
-                    }}
-                  >
-                    {tech}
-                  </span>
-                ))}
-              </div>
-
-              {exp.documents && (
-                <div style={{ marginTop: '12px' }}>
-                  <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px' }}>
-                    {exp.documents.map((doc, i) => (
-                      <a
-                        key={i}
-                        href={doc.url}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        style={{
-                          display: 'flex',
-                          alignItems: 'center',
-                          gap: '6px',
-                          padding: '6px 10px',
-                          backgroundColor: '#1a1a1a',
-                          border: '1px solid #f02eaa',
-                          borderRadius: '6px',
-                          fontSize: '0.75rem',
-                          color: '#f02eaa',
-                          textDecoration: 'none',
-                          transition: 'all 0.2s ease',
-                        }}
-                        onMouseEnter={(e) => {
-                          e.currentTarget.style.backgroundColor = '#f02eaa';
-                          e.currentTarget.style.color = '#ffffff';
-                        }}
-                        onMouseLeave={(e) => {
-                          e.currentTarget.style.backgroundColor = '#1a1a1a';
-                          e.currentTarget.style.color = '#f02eaa';
-                        }}
-                      >
-                        <FileText style={{ width: '14px', height: '14px' }} />
-                        {doc.name}
-                        <ExternalLink style={{ width: '12px', height: '12px' }} />
-                      </a>
-                    ))}
-                  </div>
-                </div>
-              )}
-            </div>
-          </div>
-
-          {/* Connection line */}
-          {index < experiences.length - 1 && (
-            <div
-              style={{
-                width: '1px',
-                height: '24px',
-                backgroundColor: '#333',
-                marginLeft: '16px',
-                marginTop: '8px',
-              }}
-            ></div>
-          )}
+    <div className="repo-container">
+      <div className="repo-header">
+        <div className="repo-title">
+          <GitBranch size={16} />
+          <span>professional-experience</span>
+          <span className="repo-visibility">Public</span>
         </div>
-      ))}
+        <div className="repo-stats">
+          <span className="repo-stat">
+            <Star size={14} />
+            {experiences.length} experiences
+          </span>
+        </div>
+      </div>
+      
+      {orderedTypes.map(type => renderCommitContainer(type, groupedExperiences[type]))}
     </div>
   );
 };
