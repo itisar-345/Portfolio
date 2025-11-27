@@ -15,7 +15,6 @@ import {
   Zap,
 } from 'lucide-react';
 
-
 const summarize = (text = '') => text.replace(/•/g, '').split('\n')[0].trim();
 
 const getExperienceHighlights = (items = [], limit = 3) =>
@@ -45,14 +44,10 @@ const HomePage = () => {
   const [expandedProject, setExpandedProject] = useState(null);
   const isMobile = useIsMobile();
   const { data: devStats, status: statsStatus, errors: statsErrors } = useDeveloperStats();
-
   const { github, leetcode, wakatimeAllTime } = devStats;
-
 
   const experienceHighlights = useMemo(() => getExperienceHighlights(experiences, isMobile ? 2 : 3), [isMobile]);
   const projectHighlights = useMemo(() => getProjectHighlights(projects, isMobile ? 2 : 3), [isMobile]);
-
-
 
   return (
     <div className="app-shell">
