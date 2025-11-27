@@ -48,7 +48,7 @@ const HomePage = () => {
   const isMobile = useIsMobile();
   const { data: devStats, status: statsStatus, errors: statsErrors } = useDeveloperStats();
 
-  const { github, leetcode, wakatime30Days, wakatimeAllTime } = devStats;
+  const { github, leetcode, wakatimeAllTime } = devStats;
 
 
   const experienceHighlights = useMemo(() => getExperienceHighlights(experiences, isMobile ? 2 : 3), [isMobile]);
