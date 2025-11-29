@@ -23,7 +23,7 @@ export const projects = [
       imageUrl: "/invoiceextractor.jpeg"
     },
     {
-      title: "E-Commerce Platform",
+      title: "Peachy Shop",
       description: "• Comprehensive e-commerce platform with two distinct implementation styles\n• Supports multi-role functionality for customers and vendors\n• Features product management, cart, order processing, and analytics\n• Secure JWT-based authentication and role-based access control",
       techStack: ["Spring Boot", "Maven", "RESTful", "JWT", "React", "TypeScript", "MySQL", "Tailwind", "PHP", "JavaScript"],
       githubUrl: "https://github.com/itisar-345/E-commerce-Project/",
@@ -87,7 +87,7 @@ export const experiences = [
     },
     {
       id: "e2",
-      company: "Somaiya Machine Learning & Research Association",
+      company: "SMLRA",
       position: "Team Lead",
       location: "KJ Somaiya College of Engineering, Mumbai",
       type: "Leadership",

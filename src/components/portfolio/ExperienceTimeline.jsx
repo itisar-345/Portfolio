@@ -1,4 +1,4 @@
-import { Calendar, GitBranch, GitCommit,Paperclip, ScrollText, Star, MapPin, FileText, ExternalLink } from 'lucide-react';
+import { Calendar, GitBranch, GitCommit, Paperclip, ScrollText, Star, MapPin, FileText, ExternalLink, ChevronDown } from 'lucide-react';
 
 const ExperienceTimeline = ({ experiences }) => {
   const getCommitType = (type) => {
@@ -37,8 +37,9 @@ const ExperienceTimeline = ({ experiences }) => {
             </div>
             
             <div className="commit-meta-section">
-              <span className="commit-hash">{exp.id.substring(0, 7)}</span>
+              <ChevronDown size={14} className="expand-icon" />
               <span className="commit-time">{exp.startDate} - {exp.endDate}</span>
+              <span className="commit-hash">{exp.id.substring(0, 7)}</span>
             </div>
           </summary>
           
