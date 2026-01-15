@@ -7,43 +7,35 @@ export const projects = [
       imageUrl: "/sentinelai.png"
     },
     {
+      title: "Invoice Data Extractor",
+      description: "• Windows desktop app (.exe) for AI-based invoice data extraction\n• Extracts structured data from PDF/JPG invoices (~91% accuracy, 1000+ tested)\n• Uses OCR + LLM (Groq / LLaMA 3.1) with intelligent fallback\n• Supports multi-file processing and append-safe Excel export\n• Standardized, analytics-ready output for real-world workflows",
+      techStack: ["Electron", "Python", "OCR", "LLMs"],
+      githubUrl: "https://github.com/Cherry28831/Invoice-Data-Extractor",
+      liveUrl: "https://github.com/Cherry28831/Invoice-Data-Extractor/releases/tag/v2.0.0",
+      imageUrl: "/invoiceextractor.jpeg"
+    },
+    {
+      title: "Peachy Shop",
+      description: "• Full-stack e-commerce platform with customer and vendor roles\n• Secure authentication with role-based access and protected workflows\n• End-to-end shopping flow: product listing, cart, wishlist, and order processing\n• Optimized performance using caching and paginated product browsing\n• Responsive, production-ready system designed for real-world scalability",
+      techStack: ["Spring Boot", "Maven", "JWT", "RESTful", "React", "MySQL", "TypeScript", "Tailwind", "PHP", "JavaScript"],
+      githubUrl: "https://github.com/itisar-345/E-commerce-Project/",
+      imageUrl: "/ecommerce.png"
+    },
+    {
       title: "AI Resume Scanner",
-      description: "• Analyzes uploaded resumes, scores ATS compatibility\n• Provides actionable suggestions to improve hiring chances\n• Achieved 97% accuracy with instant results\n• Secure browser-based data handling\n• Includes downloadable report generation",
-      techStack: ["Python", "JavaScript", "React", "LLMs"],
+      description: "• AI-powered ATS resume checker for scoring and optimizing resumes\n• Analyzes PDF/DOCX/TXT resumes with category-wise ATS compatibility scores\n• Generates actionable improvement suggestions with before–after comparisons using LLMs\n• Privacy-first design with local resume history and analytics",
+      techStack: ["Python", "React", "Express.js", "LLMs", "PDF.js", "Mammoth", "LocalStorage" ],
       githubUrl: "https://github.com/itisar-345/ATS-Checker",
       liveUrl: "https://ats-checker-alpha.vercel.app/",
       imageUrl: "/atschecker.png"
     },
     {
-      title: "Invoice Data Extractor",
-      description: "• Lightweight Windows desktop app (.exe) for data extraction\n• Extracts data from PDF/JPG invoices with over 95% accuracy\n• Uses OCR, Gemini (Generative AI), and smart processing\n• Supports multi-file processing and user-defined storage\n• Standardized output for seamless client integration",
-      techStack: ["Electron", "Python", "OCR", "Gemini", "LLMs"],
-      githubUrl: "https://github.com/Cherry28831/Invoice-Data-Extractor",
-      liveUrl: "https://github.com/Cherry28831/Invoice-Data-Extractor/releases/tag/v1.0.0",
-      imageUrl: "/invoiceextractor.jpeg"
-    },
-    {
-      title: "Peachy Shop",
-      description: "• Comprehensive e-commerce platform with two distinct implementation styles\n• Supports multi-role functionality for customers and vendors\n• Features product management, cart, order processing, and analytics\n• Secure JWT-based authentication and role-based access control",
-      techStack: ["Spring Boot", "Maven", "RESTful", "JWT", "React", "TypeScript", "MySQL", "Tailwind", "PHP", "JavaScript"],
-      githubUrl: "https://github.com/itisar-345/E-commerce-Project/",
-      imageUrl: "/ecommerce.png"
-    },
-    {
       title: "Diabetes Check Web App",
-      description: "• Web app to classify users as Diabetic, Pre-diabetic, or Healthy\n• Based on a 20-question form with real-time results\n• Achieved 84% correct prediction rate\n• Provides personalized health feedback",
-      techStack: ["Python", "JavaScript", "Flask", "Scikit-learn", "HTML", "CSS"],
+      description: "• ML-powered web app for diabetes risk prediction (Healthy / Prediabetic / Diabetic)\n• Trained Random Forest model (~84% accuracy) on CDC BRFSS health indicators\n• Real-time Flask inference with personalized health & lifestyle recommendations\n• Probability-based prediction visualization for model confidence\n• Deployed on Render with optimized, lightweight ML pipeline",
+      techStack: ["Python", "Flask", "Scikit-learn", "Pandas", "NumPy", "HTML/CSS", "Render", "ML"],
       githubUrl: "https://github.com/itisar-345/Diabetes-Predictor",
       liveUrl: "https://diabetes-predictor-g5yv.onrender.com/",
       imageUrl: "/diabetespredictor.png"
-    },
-    {
-      title: "Budget Calculator Pro",
-      description: "• Professional budget calculator with income, expense, and savings tracking \n• Provides cash flow projections, financial health insights and personalized recommendations \n• Supports data export, interactive charts, and responsive design \n• All data stored locally for privacy, with GitHub Pages deployment support",
-      techStack: ["React", "TypeScript", "Vite", "Github Actions"],
-      githubUrl: "https://github.com/itisar-345/Budget-Calculator",
-      liveUrl: "https://itisar-345.github.io/Budget-Calculator/",
-      imageUrl: "/budgetcal.png"
     }
 ];
 
