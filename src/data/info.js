@@ -1,15 +1,15 @@
 export const projects = [
     {
       title: "Sentinel AI",
-      description: "• Real-time DDoS detection system for 5G network slices using ML and SDN\n• Dual-mode traffic monitoring with slice-level threat classification\n• Full-stack architecture with autonomous detection, IP reputation checks, and live threat visualization\n• In-progress self-healing mechanisms for dynamic mitigation",
-      techStack: ["React", "Node.js", "Python", "Flask", "SDN", "Docker", "Tshark", "ML"],
+      description: "• Enterprise-grade AI system for real-time DDoS detection & mitigation in 5G networks\n• Detects and blocks attacks in <50ms using ensemble ML\n• Autonomous SDN-based mitigation via Ryu with auto-block & recovery\n• 5G slice-aware security for eMBB, URLLC, and mMTC traffic\n• Live monitoring dashboard with explainable AI insights and attack analytics",
+      techStack: ["Python", "React", "Node.js", "Flask", "Ryu", "Mininet", "SHAP", "Random Forest", "XGBoost", "LSTM"],
       githubUrl: "https://github.com/itisar-345/Sentinel-AI",
       imageUrl: "/sentinelai.png"
     },
     {
       title: "Invoice Data Extractor",
       description: "• Windows desktop app (.exe) for AI-based invoice data extraction\n• Extracts structured data from PDF/JPG invoices (~91% accuracy, 1000+ tested)\n• Uses OCR + LLM (Groq / LLaMA 3.1) with intelligent fallback\n• Supports multi-file processing and append-safe Excel export\n• Standardized, analytics-ready output for real-world workflows",
-      techStack: ["Electron", "Python", "OCR", "LLMs"],
+      techStack: ["Electron", "Python", "OCR", "LLMs", "Pandas", "OpenCV", "Tesseract"],
       githubUrl: "https://github.com/Cherry28831/Invoice-Data-Extractor",
       liveUrl: "https://github.com/Cherry28831/Invoice-Data-Extractor/releases/tag/v2.0.0",
       imageUrl: "/invoiceextractor.jpeg"
@@ -40,6 +40,20 @@ export const projects = [
 ];
 
 export const experiences = [
+  {
+      id: "e5",
+      company: "ACI Worldwide",
+      position: "Tech Consultant Intern",
+      location: "Mumbai, India",
+      type: "Internship",
+      startDate: "2026-01",
+      endDate: "present",
+      description: [
+      ],
+      technologies: [],
+      documents: [
+      ]
+    },
     {
       id: "e4",
       company: "Home First Finance Company",
