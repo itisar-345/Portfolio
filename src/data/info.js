@@ -49,9 +49,13 @@ export const experiences = [
       startDate: "2026-01",
       endDate: "present",
       description: [
+        "Designed and implemented a real-time PAN validation pipeline for ATM Re-KYC by integrating BASE24 with UPF using ISO8583 (0200/0210), including DE-125 TLV parsing and secure REST API orchestration with NSDL services",
+        "Engineered end-to-end transaction processing logic covering PAN status interpretation, structured ISO response construction (DE-38/39/126), and customer name-matching validation to ensure regulatory-compliant KYC verification",
+        "Built resilient error-handling and response-code mapping mechanisms (00/03/05/91) with timeout and format validation safeguards to maintain reliability in high-volume ATM transaction environments"
       ],
-      technologies: [],
+      technologies: ["ISO8583", "REST APIs", "UPF", "TLV Protocol", "SoapUI", "Oracle VM"],
       documents: [
+        { name: "Offer Letter", url: "/documents/ACI-Worldwide-Offer.pdf" }
       ]
     },
     {
