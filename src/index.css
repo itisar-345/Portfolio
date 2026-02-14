@@ -636,7 +636,6 @@ a {
 }
 
 .diff-line.added {
-  background: rgba(40, 167, 69, 0.0.5);
   margin: 0 -12px;
   padding: 2px 12px;
 }
