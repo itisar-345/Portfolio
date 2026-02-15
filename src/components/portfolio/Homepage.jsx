@@ -54,7 +54,7 @@ const HomePage = () => {
       <div className="github-shell">
         <header className="github-header">
           <div className="github-avatar">
-            <img src='/me.svg' alt='GitHub avatar' />
+            <img src='	https://media.licdn.com/dms/image/v2/D4D03AQFZjmQJ_Q5d3A/profile-displayphoto-scale_200_200/B4DZpeT3rdJcAY-/0/1762518861188?e=1772668800&v=beta&t=Uc_1BVqx-DwO6hOzzuTKajM7T2wVQExjoWs3mDoYU0s' alt='GitHub avatar' />
             <span className="github-status">
               <span className="status-dot" />
               Open to Work
