@@ -1,10 +1,23 @@
 export const projects = [
     {
+      title: "AI-Powered Productivity Platform",
+      description: "• Enterprise-grade AI productivity platform unifying email, meetings, research, automation, and knowledge systems \n• Hybrid RAG (vector + keyword search) with citation-level grounding to reduce hallucinations\n• rivacy-first design with on-device transcription and encrypted local processing\n• Natural language → workflow automation with approval gates and rollback logic\n• Knowledge graph (Neo4j) linking decisions, rationale, and artifacts for contextual intelligence",
+      techStack: ["Next.js", "FastAPI", "PostgreSQL", "Neo4j", "Qdrant", "LangChain", "Whisper", "Ollama", "RAG", "OAuth2", "OPA", "Keycloak", "AES-256", "Docker", "Kubernetes", "Redis" ],
+      githubUrl: "https://github.com/itisar-345/FUTUREOFWORK_PRODUCTIVITY"
+    },
+    {
       title: "Sentinel AI",
       description: "• Enterprise-grade AI system for real-time DDoS detection & mitigation in 5G networks\n• Detects and blocks attacks in <50ms using ensemble ML\n• Autonomous SDN-based mitigation via Ryu with auto-block & recovery\n• 5G slice-aware security for eMBB, URLLC, and mMTC traffic\n• Live monitoring dashboard with explainable AI insights and attack analytics",
-      techStack: ["Python", "React", "Node.js", "Flask", "Ryu", "Mininet", "SHAP", "Random Forest", "XGBoost", "LSTM"],
+      techStack: ["Python", "React", "Node.js", "Flask", "Ryu", "Mininet", "SDN", "WebSockets", "TensorFlow", "Linux"],
       githubUrl: "https://github.com/itisar-345/Sentinel-AI",
-      imageUrl: "/sentinelai.png"
+      imageUrl: "/sentinal.gif"
+    },
+    {
+      title: "Peachy Shop",
+      description: "• Full-stack e-commerce platform built with Spring Boot + React with dual-token JWT authentication (auto refresh)\n• Redis-powered architecture (Hash for cart, Set for wishlist, Cache-Aside for products) with <100ms cached responses\n• Role-based access control (Customer/Vendor) with secure REST APIs and method-level authorization\n• Stock-aware order lifecycle (validation, optimistic locking, auto-reduction on delivery)\n• Production-grade MySQL + Redis dual-write system with pagination and concurrency-safe operations",
+      techStack: ["Java", "Spring Boot", "Maven", "React", "Typescript", "Tailwind", "SQL", "Docker", "Redis", "JWT", "RESTful APIs", "RBAC"],
+      githubUrl: "https://github.com/itisar-345/E-commerce-Project/",
+      imageUrl: "/ecommerce.gif"
     },
     {
       title: "Invoice Data Extractor",
@@ -12,14 +25,7 @@ export const projects = [
       techStack: ["Electron", "Python", "OCR", "LLMs", "Pandas", "OpenCV", "Tesseract"],
       githubUrl: "https://github.com/Cherry28831/Invoice-Data-Extractor",
       liveUrl: "https://github.com/Cherry28831/Invoice-Data-Extractor/releases/tag/v2.0.0",
-      imageUrl: "/invoiceextractor.jpeg"
-    },
-    {
-      title: "Peachy Shop",
-      description: "• Full-stack e-commerce platform with customer and vendor roles\n• Secure authentication with role-based access and protected workflows\n• End-to-end shopping flow: product listing, cart, wishlist, and order processing\n• Optimized performance using caching and paginated product browsing\n• Responsive, production-ready system designed for real-world scalability",
-      techStack: ["Spring Boot", "Maven", "JWT", "RESTful", "React", "MySQL", "TypeScript", "Tailwind", "PHP", "JavaScript"],
-      githubUrl: "https://github.com/itisar-345/E-commerce-Project/",
-      imageUrl: "/ecommerce.png"
+      imageUrl: "/invoice_extractor.gif"
     },
     {
       title: "AI Resume Scanner",
@@ -27,7 +33,7 @@ export const projects = [
       techStack: ["Python", "React", "Express.js", "LLMs", "PDF.js", "Mammoth", "LocalStorage" ],
       githubUrl: "https://github.com/itisar-345/ATS-Checker",
       liveUrl: "https://ats-checker-alpha.vercel.app/",
-      imageUrl: "/atschecker.png"
+      imageUrl: "/atschecker.gif"
     },
     {
       title: "Diabetes Check Web App",
@@ -35,7 +41,7 @@ export const projects = [
       techStack: ["Python", "Flask", "Scikit-learn", "Pandas", "NumPy", "HTML/CSS", "Render", "ML"],
       githubUrl: "https://github.com/itisar-345/Diabetes-Predictor",
       liveUrl: "https://diabetes-predictor-g5yv.onrender.com/",
-      imageUrl: "/diabetespredictor.png"
+      imageUrl: "/diabetic_predictor.gif"
     }
 ];
 
@@ -53,7 +59,7 @@ export const experiences = [
         "Engineered end-to-end transaction processing logic covering PAN status interpretation, structured ISO response construction (DE-38/39/126), and customer name-matching validation to ensure regulatory-compliant KYC verification",
         "Built resilient error-handling and response-code mapping mechanisms (00/03/05/91) with timeout and format validation safeguards to maintain reliability in high-volume ATM transaction environments"
       ],
-      technologies: ["ISO8583", "REST APIs", "UPF", "TLV Protocol", "SoapUI", "Oracle VM"],
+      technologies: ["ISO8583", "REST APIs", "UPF", "TLV Protocol", "SoapUI", "Oracle VM", "Java", "Spring Boot", "Oracle DB", "Angular", "Postman"],
       documents: [
         { name: "Offer Letter", url: "/documents/ACI-Worldwide-Offer.pdf" }
       ]

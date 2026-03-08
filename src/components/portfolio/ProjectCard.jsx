@@ -81,11 +81,20 @@ const ProjectCard = ({ title, description, techStack = [], githubUrl, liveUrl, i
               </div>
               <div className="details-section">
                 <h4>Preview</h4>
-                {imageUrl ? (
-                  <img src={imageUrl} alt={title} className="project-preview-img" />
-                ) : (
-                  <div className="no-preview">No preview available</div>
-                )}
+                <div className="project-preview-container">
+                  {imageUrl ? (
+                    <img 
+                      src={imageUrl} 
+                      alt={`${title} preview`} 
+                      className="project-preview-img"
+                      loading="lazy"
+                    />
+                  ) : (
+                    <div className="no-preview">
+                      <span>No preview available</span>
+                    </div>
+                  )}
+                </div>
               </div>
             </div>
           </td>
