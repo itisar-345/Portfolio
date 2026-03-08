@@ -25,7 +25,7 @@ export const projects = [
       techStack: ["Electron", "Python", "OCR", "LLMs", "Pandas", "OpenCV", "Tesseract"],
       githubUrl: "https://github.com/Cherry28831/Invoice-Data-Extractor",
       liveUrl: "https://github.com/Cherry28831/Invoice-Data-Extractor/releases/tag/v2.0.0",
-      imageUrl: "/invoice_extractor.gif"
+      imageUrl: "/invoiceextractor.gif"
     },
     {
       title: "AI Resume Scanner",
@@ -41,7 +41,7 @@ export const projects = [
       techStack: ["Python", "Flask", "Scikit-learn", "Pandas", "NumPy", "HTML/CSS", "Render", "ML"],
       githubUrl: "https://github.com/itisar-345/Diabetes-Predictor",
       liveUrl: "https://diabetes-predictor-g5yv.onrender.com/",
-      imageUrl: "/diabetic_predictor.gif"
+      imageUrl: "/diabetespredictor.gif"
     }
 ];
 

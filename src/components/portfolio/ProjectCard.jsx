@@ -88,6 +88,12 @@ const ProjectCard = ({ title, description, techStack = [], githubUrl, liveUrl, i
                       alt={`${title} preview`} 
                       className="project-preview-img"
                       loading="lazy"
+                      onError={(e) => {
+                        if (e.target.src.includes('.gif')) {
+                          let fallbackSrc = e.target.src.replace('.gif', '.png');
+                          e.target.src = fallbackSrc;
+                        }
+                      }}
                     />
                   ) : (
                     <div className="no-preview">
