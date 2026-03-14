@@ -145,18 +145,24 @@ export const fetchLeetCodeStats = async () => {
   
   try {
     // Fetch profile and contest data in parallel
-    const [profileRes, contestRes] = await Promise.all([
+    const [profileRes, contestRes, solvedRes] = await Promise.all([
       fetch(`${baseUrl}/profile`),
-      fetch(`${baseUrl}/contest`)
+      fetch(`${baseUrl}/contest`),
+      fetch(`${baseUrl}/solved`)
     ]);
 
     if (!profileRes.ok || !contestRes.ok) throw new Error('LeetCode API error');
 
     const profile = await profileRes.json();
     const contest = await contestRes.json();
+    const solvedData = await solvedRes.json();
+
     const bestContestEntry = contest.contestParticipation?.reduce((prev, curr) => 
       (prev.ranking < curr.ranking) ? prev : curr
     ); 
+    const totalSub = solvedData.totalSubmissionNum?.find(s => s.difficulty === "All")?.submissions || 0;
+    const acSub = solvedData.acSubmissionNum?.find(s => s.difficulty === "All")?.submissions || 0;
+    const acceptanceRate = totalSub > 0 ? ((acSub / totalSub) * 100).toFixed(1) : 0;
 
     return {
       // Basic & Social
@@ -180,9 +186,7 @@ export const fetchLeetCodeStats = async () => {
       bestRank: bestContestEntry?.ranking || null,
       
       // Submission Details (Extracting acceptance rate logic)
-      acceptanceRate: profile.totalSubmissions?.[0]?.submissions > 0 
-        ? ((profile.totalSubmissions[0].count / profile.totalSubmissions[0].submissions) * 100).toFixed(1)
-        : 0,
+      acceptanceRate,
       
       status: 'success'
     };
