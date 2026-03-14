@@ -105,7 +105,7 @@ const StatsTab = ({ devStats }) => {
               <div className="stat-items">
                 <div className="stat-item">
                   <span className="stat-label">Contest Rating</span>
-                  <span className="stat-value">{leetcode?.contestRanking ? Math.round(leetcode.contestRanking) : '—'}</span>
+                  <span className="stat-value">{leetcode?.contestRating ? Math.round(leetcode.contestRating) : '—'}</span>
                 </div>
                 <div className="stat-item">
                   <span className="stat-label">Best Rank</span>

@@ -140,76 +140,55 @@ export const fetchGitHubStats = async () => {
 export const fetchLeetCodeStats = async () => {
   if (!credentials.leetcode.username) return null;
   
-  const username = credentials.leetcode.username; // Define username here
+  const username = credentials.leetcode.username;
+  const baseUrl = `https://alfa-leetcode-api.onrender.com/${username}`;
   
   try {
-    // Fetch main stats from API
-    const mainResponse = await fetch(`${credentials.leetcode.apiUrl}/${username}`);
-    if (!mainResponse.ok) throw new Error(`LeetCode API error: ${mainResponse.status}`);
-    
-    const mainData = await mainResponse.json();
+    // Fetch profile and contest data in parallel
+    const [profileRes, contestRes] = await Promise.all([
+      fetch(`${baseUrl}/profile`),
+      fetch(`${baseUrl}/contest`)
+    ]);
 
-    // Basic stats that work without CORS issues
-    const baseStats = {
-      globalRank: mainData.ranking,
-      reputation: mainData.reputation,
-      contributionPoints: mainData.contributionPoints,
-      
-      problemsSolved: mainData.totalSolved,
-      easy: mainData.easySolved,
-      medium: mainData.mediumSolved,
-      hard: mainData.hardSolved,
-      
-      totalEasy: mainData.totalEasy,
-      totalMedium: mainData.totalMedium,
-      totalHard: mainData.totalHard,
-      totalQuestions: mainData.totalQuestions,
-      
-      acceptanceRate: mainData.acceptanceRate,
-      
-      submissionCalendar: mainData.submissionCalendar,
-      status: mainData.status
-    };
+    if (!profileRes.ok || !contestRes.ok) throw new Error('LeetCode API error');
 
-    // Try to get contest data separately from the new API
-    let contestData = null;
-    try {
-      const contestResponse = await fetch(`https://alfa-leetcode-api-three.vercel.app/${username}/contest`);
-      if (contestResponse.ok) {
-        contestData = await contestResponse.json();
-      }
-    } catch (contestErr) {
-      console.warn('Could not fetch contest data:', contestErr.message);
-    }
+    const profile = await profileRes.json();
+    const contest = await contestRes.json();
+    const bestContestEntry = contest.contestParticipation?.reduce((prev, curr) => 
+      (prev.ranking < curr.ranking) ? prev : curr
+    ); 
 
-    // Process contest data if available
-    let contestRanking = null;
-    let contests = null;
-    let bestRank = null;
-    let contestGlobalRank = null;
-
-    if (contestData) {
-      contestRanking = contestData.contestRating || null;
-      contests = contestData.contestParticipation?.length || null;
-      
-      if (contestData.contestParticipation?.length > 0) {
-        // Find best rank (lowest ranking number)
-        bestRank = Math.min(...contestData.contestParticipation.map(c => c.ranking));
-        // Use latest contest ranking or global ranking
-        contestGlobalRank = contestData.contestGlobalRanking || 
-                           contestData.contestParticipation[contestData.contestParticipation.length - 1]?.ranking || null;
-      }
-    }
     return {
-      ...baseStats,
-      contestRanking: contestRanking,
-      contests: contests,
-      bestRank: bestRank,
-      contestGlobalRank: contestGlobalRank,
+      // Basic & Social
+      globalRank: profile.ranking || null,
+      
+      // Problem Solving Stats
+      problemsSolved: profile.totalSolved || 0,
+      easy: profile.easySolved || 0,
+      medium: profile.mediumSolved || 0,
+      hard: profile.hardSolved || 0,
+      
+      // Totals
+      totalEasy: profile.totalEasy || 0,
+      totalMedium: profile.totalMedium || 0,
+      totalHard: profile.totalHard || 0,
+      totalQuestions: profile.totalQuestions || 0,
+      
+      // Contest Stats
+      contestRating: contest.contestRating ? Math.floor(contest.contestRating) : 0,
+      contestGlobalRank: contest.contestGlobalRanking || null,
+      bestRank: bestContestEntry?.ranking || null,
+      
+      // Submission Details (Extracting acceptance rate logic)
+      acceptanceRate: profile.totalSubmissions?.[0]?.submissions > 0 
+        ? ((profile.totalSubmissions[0].count / profile.totalSubmissions[0].submissions) * 100).toFixed(1)
+        : 0,
+      
+      status: 'success'
     };
   } catch (error) {
     console.error('LeetCode fetch error:', error);
-    throw new Error(`Failed to fetch LeetCode stats: ${error.message}`);
+    return null;
   }
 };
 

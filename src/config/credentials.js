@@ -5,7 +5,7 @@ export const credentials = {
   },
   leetcode: {
     username: import.meta.env.VITE_LEETCODE_USERNAME,
-    apiUrl: import.meta.env.VITE_LEETCODE_API_URL || 'https://leetcode-stats-api.herokuapp.com',
+    apiUrl: import.meta.env.VITE_LEETCODE_API_URL || 'https://alfa-leetcode-api.onrender.com/',
   },
   wakatime: {
     last30Days: import.meta.env.VITE_WAKATIME_30_DAYS_URL,
