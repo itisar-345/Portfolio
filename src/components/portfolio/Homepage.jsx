@@ -76,7 +76,7 @@ const HomePage = () => {
       <div className="github-shell">
         <header className="github-header">
           <div className="github-avatar">
-            <img src='https://media.licdn.com/dms/image/v2/D4D03AQFZjmQJ_Q5d3A/profile-displayphoto-scale_200_200/B4DZpeT3rdJcAY-/0/1762518861188?e=1774483200&v=beta&t=QhCKoWoEWjK25u5aqlRzWTL1apLsBpfk_bYUrMvSgKw' alt='GitHub avatar' onError={(e) => { e.target.src = '/me.svg'; }} />
+            <img src='/me.jpeg' alt='GitHub avatar' onError={(e) => { e.target.src = '/me.svg'; }} />
             <span className="github-status">
               <span className="status-dot" />
               Open to Work
