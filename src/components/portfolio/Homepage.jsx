@@ -1,7 +1,10 @@
 import { useMemo, useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import ProjectCard from './ProjectCard';
 import StatsTab from './StatsTab';
 import ContactTab from './ContactTab';
+import TiltCard from './TiltCard';
+import Typewriter from './Typewriter';
 import { projects, experiences } from '../../data/info';
 import ExperienceTimeline from './ExperienceTimeline';
 import { useIsMobile } from '../../hooks/usemobile';
@@ -49,6 +52,25 @@ const HomePage = () => {
   const experienceHighlights = useMemo(() => getExperienceHighlights(experiences, isMobile ? 2 : 3), [isMobile]);
   const projectHighlights = useMemo(() => getProjectHighlights(projects, isMobile ? 2 : 3), [isMobile]);
 
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    show: {
+      opacity: 1,
+      transition: { staggerChildren: 0.1 }
+    }
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 20 },
+    show: { opacity: 1, y: 0, transition: { type: "spring", stiffness: 300, damping: 24 } }
+  };
+
+  const tabVariants = {
+    initial: { opacity: 0, y: 15 },
+    animate: { opacity: 1, y: 0, transition: { duration: 0.4, ease: "easeOut" } },
+    exit: { opacity: 0, y: -15, transition: { duration: 0.2, ease: "easeIn" } }
+  };
+
   return (
     <div className="app-shell">
       <div className="github-shell">
@@ -63,8 +85,10 @@ const HomePage = () => {
           <div className="github-identity">
             <div>
               <p className="github-handle">@ritisa-behera</p>
-              <h1>Ritisa Behera</h1>
-              <p className="github-tagline">Software Developer & Problem Solver</p>
+              <h1 className="glitch-text" data-text="Ritisa Behera">Ritisa Behera</h1>
+              <p className="github-tagline">
+                <Typewriter text="Software Developer & Problem Solver" delay={75} />
+              </p>
             </div>
             <div className="github-actions">
               <a className="btn primary" href="mailto:ritisarabindra@gmail.com">
@@ -106,146 +130,197 @@ const HomePage = () => {
         </nav>
 
         <main className="github-content">
-          {activeTab === 'overview' && (
-            <section className="github-grid" role="tabpanel" id="overview-panel">
-              <div className="github-column left">
-                <section className="card project-highlight-card">
-                  <header>
-                    <span>Project highlights</span>
-                    <GitBranch size={16} />
-                  </header>
-                  <div className="project-highlight-grid">
-                    {projectHighlights.map((project) => (
-                      <article key={project.title} className="project-highlight">
-                        <div className="project-highlight-head">
-                          <p className="project-highlight-title">{project.title}</p>
-                          <div className="project-highlight-links">
-                            {project.liveUrl && (
-                              <a href={project.liveUrl} target="_blank" rel="noreferrer">
-                                Live
-                              </a>
-                            )}
-                            {project.githubUrl && (
-                              <a href={project.githubUrl} target="_blank" rel="noreferrer">
-                                Code
-                              </a>
-                            )}
+          <AnimatePresence mode="wait">
+            {activeTab === 'overview' && (
+              <motion.section 
+                key="overview"
+                variants={tabVariants}
+                initial="initial"
+                animate="animate"
+                exit="exit"
+                className="github-grid" role="tabpanel" id="overview-panel"
+              >
+                <div className="github-column left">
+                  <section className="card project-highlight-card">
+                    <header>
+                      <span>Project highlights</span>
+                      <GitBranch size={16} />
+                    </header>
+                    <motion.div 
+                      variants={containerVariants}
+                      initial="hidden"
+                      animate="show"
+                      className="project-highlight-grid"
+                    >
+                      {projectHighlights.map((project) => (
+                        <motion.div variants={itemVariants} key={project.title}>
+                          <TiltCard className="project-highlight">
+                            <div className="project-highlight-head">
+                              <p className="project-highlight-title">{project.title}</p>
+                              <div className="project-highlight-links">
+                                {project.liveUrl && (
+                                  <a href={project.liveUrl} target="_blank" rel="noreferrer">
+                                    Live
+                                  </a>
+                                )}
+                                {project.githubUrl && (
+                                  <a href={project.githubUrl} target="_blank" rel="noreferrer">
+                                    Code
+                                  </a>
+                                )}
+                              </div>
+                            </div>
+                            <p className="project-highlight-summary">{project.summary}</p>
+                            <div className="project-highlight-tags">
+                              {project.techStack.map((tech) => (
+                                <span key={tech}>{tech}</span>
+                              ))}
+                            </div>
+                          </TiltCard>
+                        </motion.div>
+                      ))}
+                    </motion.div>
+                    <button
+                      type="button"
+                      className="inline-link"
+                      onClick={() => setActiveTab('projects')}
+                    >
+                      Browse all projects →
+                    </button>
+                  </section>
+              </div>
+
+                <div className="github-column right">
+                  <section className="card experience-overview">
+                    <header>
+                      <span>Experience overview</span>
+                      <Users size={16} />
+                    </header>
+                    <motion.div 
+                      variants={containerVariants}
+                      initial="hidden"
+                      animate="show"
+                      className="experience-list"
+                    >
+                      {experienceHighlights.map((exp) => (
+                        <motion.article variants={itemVariants} key={exp.id} className="experience-item">
+                          <div className="experience-role">
+                            <strong>{exp.position}</strong>
+                            <span>@ {exp.company}</span>
                           </div>
-                        </div>
-                        <p className="project-highlight-summary">{project.summary}</p>
-                        <div className="project-highlight-tags">
-                          {project.techStack.map((tech) => (
-                            <span key={tech}>{tech}</span>
-                          ))}
-                        </div>
-                      </article>
-                    ))}
-                  </div>
-                  <button
-                    type="button"
-                    className="inline-link"
-                    onClick={() => setActiveTab('projects')}
-                  >
-                    Browse all projects →
-                  </button>
-                </section>
-              </div>
-
-              <div className="github-column right">
-                <section className="card experience-overview">
-                  <header>
-                    <span>Experience overview</span>
-                    <Users size={16} />
-                  </header>
-                  <div className="experience-list">
-                    {experienceHighlights.map((exp) => (
-                      <article key={exp.id} className="experience-item">
-                        <div className="experience-role">
-                          <strong>{exp.position}</strong>
-                          <span>@ {exp.company}</span>
-                        </div>
-                        <div className="experience-meta">
-                          <span>{exp.timeframe}</span>
-                          <span>{exp.location}</span>
-                        </div>
-                        {exp.summary && <p className="experience-summary">{exp.summary}</p>}
-                      </article>
-                    ))}
-                  </div>
-                  <button
-                    type="button"
-                    className="inline-link"
-                    onClick={() => setActiveTab('experience')}
-                  >
-                    View full timeline →
-                  </button>
-                </section>
-              </div>
-            </section>
-          )}
-
-          {activeTab === 'experience' && (
-            <section className="card experience-section">
-              <header>
-                <span>Experience timeline</span>
-                <Activity size={16} />
-              </header>
-              <div className="experience-content">
-                <ExperienceTimeline experiences={experiences} />
-              </div>
-            </section>
-          )}
-
-          {activeTab === 'projects' && (
-            <section className="repo-container">
-              <div className="repo-header">
-                <div className="repo-title">
-                  <GitBranch size={16} />
-                  <span>project-repositories</span>
-                  <span className="repo-visibility">Public</span>
+                          <div className="experience-meta">
+                            <span>{exp.timeframe}</span>
+                            <span>{exp.location}</span>
+                          </div>
+                          {exp.summary && <p className="experience-summary">{exp.summary}</p>}
+                        </motion.article>
+                      ))}
+                    </motion.div>
+                    <button
+                      type="button"
+                      className="inline-link"
+                      onClick={() => setActiveTab('experience')}
+                    >
+                      View full timeline →
+                    </button>
+                  </section>
                 </div>
-                <div className="repo-stats">
-                  <span className="repo-stat">
-                    <span>{projects.length} projects</span>
-                  </span>
+              </motion.section>
+            )}
+
+            {activeTab === 'experience' && (
+              <motion.section 
+                key="experience"
+                variants={tabVariants}
+                initial="initial"
+                animate="animate"
+                exit="exit"
+                className="card experience-section"
+              >
+                <header>
+                  <span>Experience timeline</span>
+                  <Activity size={16} />
+                </header>
+                <div className="experience-content">
+                  <ExperienceTimeline experiences={experiences} />
                 </div>
-              </div>
-              <div className="packages-table">
-                <table className="packages-list">
-                  <thead>
-                    <tr>
-                      <th>Name</th>
-                      <th>Live</th>
-                      <th>Code</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {projects.map((project) => (
-                      <ProjectCard 
-                        key={project.title} 
-                        {...project} 
-                        isExpanded={expandedProject === project.title}
-                        onToggle={() => setExpandedProject(expandedProject === project.title ? null : project.title)}
-                      />
-                    ))}
-                  </tbody>
-                </table>
-              </div>
-            </section>
-          )}
+              </motion.section>
+            )}
 
-          {activeTab === 'stats' && (
-            <StatsTab devStats={devStats} statsStatus={statsStatus} statsErrors={statsErrors} />
-          )}
+            {activeTab === 'projects' && (
+              <motion.section
+                key="projects"
+                variants={tabVariants}
+                initial="initial"
+                animate="animate"
+                exit="exit"
+                className="repo-container"
+              >
+                <div className="repo-header">
+                  <div className="repo-title">
+                    <GitBranch size={16} />
+                    <span>project-repositories</span>
+                    <span className="repo-visibility">Public</span>
+                  </div>
+                  <div className="repo-stats">
+                    <span className="repo-stat">
+                      <span>{projects.length} projects</span>
+                    </span>
+                  </div>
+                </div>
+                <div className="packages-table">
+                  <table className="packages-list">
+                    <thead>
+                      <tr>
+                        <th>Name</th>
+                        <th>Live</th>
+                        <th>Code</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {projects.map((project) => (
+                        <ProjectCard 
+                          key={project.title} 
+                          {...project} 
+                          isExpanded={expandedProject === project.title}
+                          onToggle={() => setExpandedProject(expandedProject === project.title ? null : project.title)}
+                        />
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              </motion.section>
+            )}
 
-          {activeTab === 'contact' && (
-            <ContactTab 
-              github={github}
-              leetcode={leetcode}
-              wakatimeAllTime={wakatimeAllTime}
-              statsStatus={statsStatus}
-            />
-          )}
+            {activeTab === 'stats' && (
+              <motion.div
+                key="stats"
+                variants={tabVariants}
+                initial="initial"
+                animate="animate"
+                exit="exit"
+              >
+                <StatsTab devStats={devStats} statsStatus={statsStatus} statsErrors={statsErrors} />
+              </motion.div>
+            )}
+
+            {activeTab === 'contact' && (
+              <motion.div
+                key="contact"
+                variants={tabVariants}
+                initial="initial"
+                animate="animate"
+                exit="exit"
+              >
+                <ContactTab 
+                  github={github}
+                  leetcode={leetcode}
+                  wakatimeAllTime={wakatimeAllTime}
+                  statsStatus={statsStatus}
+                />
+              </motion.div>
+            )}
+          </AnimatePresence>
         </main>
       </div>
     </div>

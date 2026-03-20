@@ -161,7 +161,7 @@ const StatsTab = ({ devStats }) => {
                       <XAxis dataKey="date" tick={{ fontSize: 9 }} interval={3} />
                       <YAxis />
                       <Tooltip formatter={(value) => `${value} hrs`} />
-                      <Bar dataKey="hours" fill="#4a9f6a" radius={[4, 4, 0, 0]} />
+                      <Bar dataKey="hours" fill="#8b5cf6" radius={[4, 4, 0, 0]} />
                     </BarChart>
                   </ResponsiveContainer>
                 ) : (

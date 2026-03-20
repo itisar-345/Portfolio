@@ -1,4 +1,5 @@
 import { Calendar, GitBranch, GitCommit, Paperclip, ScrollText, Star, MapPin, FileText, ExternalLink, ChevronDown } from 'lucide-react';
+import { motion } from 'framer-motion';
 
 const ExperienceTimeline = ({ experiences }) => {
   const getCommitType = (type) => {
@@ -27,8 +28,15 @@ const ExperienceTimeline = ({ experiences }) => {
         <span>{exps.length} {type.toLowerCase()} commits</span>
       </div>
       
-      {exps.map((exp) => (
-        <details key={exp.id} className="commit-detail">
+      {exps.map((exp, index) => (
+        <motion.details 
+          key={exp.id} 
+          className="commit-detail"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-50px" }}
+          transition={{ duration: 0.5, delay: index * 0.1, ease: "easeOut" }}
+        >
           <summary className="commit-row">
             <div className="commit-message-section">
               <span className="commit-type">{getCommitType(type)}:</span>
@@ -45,7 +53,7 @@ const ExperienceTimeline = ({ experiences }) => {
           
           <div className="commit-diff">
             <div className="diff-header">
-              <span className="diff-stats">+{exp.description.length} additions, +{exp.technologies.length} files</span>
+              <span className="diff-stats">+{exp.description.length} commits, +{exp.technologies.length} technologies</span>
               <span className="diff-location">
                 <MapPin size={12} />
                 {exp.location}
@@ -81,7 +89,7 @@ const ExperienceTimeline = ({ experiences }) => {
               </div>
             )}
           </div>
-        </details>
+        </motion.details>
       ))}
     </div>
   );

@@ -1,4 +1,5 @@
 import { ExternalLink, Github, Code, Package, ChevronDown, Zap } from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
 
 const parseDescription = (text = '') =>
   text
@@ -10,8 +11,15 @@ const ProjectCard = ({ title, description, techStack = [], githubUrl, liveUrl, i
   const descriptionLines = parseDescription(description);
 
   return (
-    <>
-      <tr className="package-row clickable" onClick={onToggle}>
+    <AnimatePresence>
+      <motion.tr 
+        className="package-row clickable" 
+        onClick={onToggle}
+        initial={{ opacity: 0, x: -20 }}
+        whileInView={{ opacity: 1, x: 0 }}
+        viewport={{ once: true, margin: "-10px" }}
+        transition={{ duration: 0.4 }}
+      >
         <td className="package-cell">
           <div className="package-info">
             <div className="package-header">
@@ -55,11 +63,18 @@ const ProjectCard = ({ title, description, techStack = [], githubUrl, liveUrl, i
             )}
           </div>
         </td>
-      </tr>
+      </motion.tr>
       {isExpanded && (
         <tr className="package-details">
-          <td colSpan="3">
-            <div className="details-content">
+          <td colSpan="3" style={{ padding: 0 }}>
+            <motion.div 
+              initial={{ height: 0, opacity: 0 }}
+              animate={{ height: "auto", opacity: 1 }}
+              exit={{ height: 0, opacity: 0 }}
+              transition={{ duration: 0.3 }}
+              style={{ overflow: "hidden" }}
+            >
+              <div className="details-content">
               <div className="details-section">
                 <h4>Features</h4>
                 <ul className="features-list">
@@ -102,11 +117,12 @@ const ProjectCard = ({ title, description, techStack = [], githubUrl, liveUrl, i
                   )}
                 </div>
               </div>
-            </div>
+              </div>
+            </motion.div>
           </td>
         </tr>
       )}
-    </>
+    </AnimatePresence>
   );
 };
 
