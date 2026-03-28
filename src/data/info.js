@@ -47,7 +47,7 @@ export const projects = [
 
 export const experiences = [
   {
-      id: "e5",
+      id: "e4",
       company: "ACI Worldwide",
       position: "Tech Consultant Intern",
       location: "Mumbai, India",
@@ -65,7 +65,7 @@ export const experiences = [
       ]
     },
     {
-      id: "e4",
+      id: "e3",
       company: "Home First Finance Company",
       position: "Software Engineer Intern",
       location: "Mumbai, India",
@@ -84,7 +84,7 @@ export const experiences = [
       ]
     },
     {
-      id: "e3",
+      id: "e2",
       company: "Edunet Foundation",
       position: "AI Intern",
       location: "Remote",
@@ -102,7 +102,7 @@ export const experiences = [
       ]
     },
     {
-      id: "e2",
+      id: "e1",
       company: "SMLRA",
       position: "Team Lead",
       location: "KJ Somaiya College of Engineering, Mumbai",
@@ -116,23 +116,5 @@ export const experiences = [
         "Drafted and maintained all official organizational documents while providing structured governance and record-keeping for the community",
       ],
       technologies: ["Python", "PyTorch", "TensorFlow", "Scikit-learn", "Flask", "ML/DL", "LLMs", "Reinforcement Learning"]
-    },
-    {
-      id: "e1",
-      company: "Acmegrade",
-      position: "Web Developer Intern",
-      location: "Remote",
-      type: "Internship",
-      startDate: "2023-04",
-      endDate: "2023-06",
-      description: [
-      "Developed and maintained a full-stack e-commerce website with functionalities for customer product browsing, cart management, order placement, and vendor-side product/order controls",
-      "Implemented secure authentication mechanisms and enabled role-based access for customers and vendors",
-      "Collaborated with a team to troubleshoot issues, enhance features, and gain hands-on experience in web development processes"
-      ],
-      technologies: ["HTML", "CSS", "PHP", "JavaScript", "MySQL"],
-      documents: [
-        { name: "Internship Completion Certificate", url: "/documents/Acmegrade-completion.pdf" }
-      ]
     },
 ];
