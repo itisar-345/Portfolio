@@ -1,10 +1,11 @@
-import { useMemo, useState } from 'react';
+import { useMemo, useState, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import ProjectCard from './ProjectCard';
 import StatsTab from './StatsTab';
 import ContactTab from './ContactTab';
 import TiltCard from './TiltCard';
 import Typewriter from './Typewriter';
+import ProfilePopup from './ProfilePopup';
 import { projects, experiences } from '../../data/info';
 import ExperienceTimeline from './ExperienceTimeline';
 import { useIsMobile } from '../../hooks/usemobile';
@@ -45,6 +46,8 @@ const getProjectHighlights = (items = [], limit = 3) =>
 const HomePage = () => {
   const [activeTab, setActiveTab] = useState('overview');
   const [expandedProject, setExpandedProject] = useState(null);
+  const [showProfilePopup, setShowProfilePopup] = useState(false);
+  const avatarRef = useRef(null);
   const isMobile = useIsMobile();
   const { data: devStats, status: statsStatus, errors: statsErrors } = useDeveloperStats();
   const { github, leetcode, wakatimeAllTime } = devStats;
@@ -75,8 +78,15 @@ const HomePage = () => {
     <div className="app-shell">
       <div className="github-shell">
         <header className="github-header">
-          <div className="github-avatar">
-            <img src='/me.jpeg' alt='GitHub avatar' onError={(e) => { e.target.src = '/me.svg'; }} />
+          <div className="github-avatar" style={{ position: 'relative' }}>
+            <img 
+              ref={avatarRef}
+              src='/me.jpeg' 
+              alt='GitHub avatar' 
+              onError={(e) => { e.target.src = '/me.svg'; }}
+              onClick={() => setShowProfilePopup(true)}
+              style={{ cursor: 'pointer' }}
+            />
             <span className="github-status">
               <span className="status-dot" />
               Open to Work
@@ -323,6 +333,14 @@ const HomePage = () => {
           </AnimatePresence>
         </main>
       </div>
+      
+      <ProfilePopup 
+        isOpen={showProfilePopup}
+        onClose={() => setShowProfilePopup(false)}
+        imageSrc='/me.jpeg'
+        altText='Ritisa Behera - Profile Picture'
+        avatarRef={avatarRef}
+      />
     </div>
   );
 };

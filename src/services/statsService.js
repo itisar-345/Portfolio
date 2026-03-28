@@ -144,17 +144,23 @@ export const fetchLeetCodeStats = async () => {
   const baseUrl = `https://alfa-leetcode-api.onrender.com/${username}`;
   
   try {
-    // Fetch profile and contest data in parallel
-    const [profileRes, contestRes, solvedRes] = await Promise.all([
-      fetch(`${baseUrl}/profile`),
-      fetch(`${baseUrl}/contest`),
-      fetch(`${baseUrl}/solved`)
-    ]);
-
-    if (!profileRes.ok || !contestRes.ok) throw new Error('LeetCode API error');
-
+    // Fetch sequentially with delays to avoid rate limiting
+    const profileRes = await fetch(`${baseUrl}/profile`);
+    if (!profileRes.ok) throw new Error('LeetCode profile API error');
     const profile = await profileRes.json();
+    
+    // Add delay between requests
+    await new Promise(resolve => setTimeout(resolve, 500));
+    
+    const contestRes = await fetch(`${baseUrl}/contest`);
+    if (!contestRes.ok) throw new Error('LeetCode contest API error');
     const contest = await contestRes.json();
+    
+    // Add delay between requests
+    await new Promise(resolve => setTimeout(resolve, 500));
+    
+    const solvedRes = await fetch(`${baseUrl}/solved`);
+    if (!solvedRes.ok) throw new Error('LeetCode solved API error');
     const solvedData = await solvedRes.json();
 
     const bestContestEntry = contest.contestParticipation?.reduce((prev, curr) => 
@@ -230,23 +236,44 @@ export const fetchWakaTimeStats = async (timeRange = 'last30') => {
 };
 
 export const fetchAllStats = async () => {
-  const results = await Promise.allSettled([
-    fetchGitHubStats(),
-    fetchLeetCodeStats(),
-    fetchWakaTimeStats('last30'),
-    fetchWakaTimeStats('all')
-  ]);
-
-  return {
-    github: results[0].status === 'fulfilled' ? results[0].value : null,
-    leetcode: results[1].status === 'fulfilled' ? results[1].value : null,
-    wakatime30Days: results[2].status === 'fulfilled' ? results[2].value : null,
-    wakatimeAllTime: results[3].status === 'fulfilled' ? results[3].value : null,
-    errors: {
-      github: results[0].status === 'rejected' ? results[0].reason.message : null,
-      leetcode: results[1].status === 'rejected' ? results[1].reason.message : null,
-      wakatime30Days: results[2].status === 'rejected' ? results[2].reason.message : null,
-      wakatimeAllTime: results[3].status === 'rejected' ? results[3].reason.message : null
-    }
-  };
+  const results = { github: null, leetcode: null, wakatime30Days: null, wakatimeAllTime: null, errors: {} };
+  
+  // Fetch GitHub stats first
+  try {
+    results.github = await fetchGitHubStats();
+  } catch (error) {
+    results.errors.github = error.message;
+  }
+  
+  // Add delay before LeetCode
+  await new Promise(resolve => setTimeout(resolve, 1000));
+  
+  // Fetch LeetCode stats
+  try {
+    results.leetcode = await fetchLeetCodeStats();
+  } catch (error) {
+    results.errors.leetcode = error.message;
+  }
+  
+  // Add delay before WakaTime
+  await new Promise(resolve => setTimeout(resolve, 500));
+  
+  // Fetch WakaTime stats (30 days)
+  try {
+    results.wakatime30Days = await fetchWakaTimeStats('last30');
+  } catch (error) {
+    results.errors.wakatime30Days = error.message;
+  }
+  
+  // Add delay before final WakaTime call
+  await new Promise(resolve => setTimeout(resolve, 500));
+  
+  // Fetch WakaTime stats (all time)
+  try {
+    results.wakatimeAllTime = await fetchWakaTimeStats('all');
+  } catch (error) {
+    results.errors.wakatimeAllTime = error.message;
+  }
+  
+  return results;
 };
