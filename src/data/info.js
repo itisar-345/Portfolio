@@ -58,10 +58,10 @@ export const experiences = [
         "Designed and implemented a real-time PAN validation pipeline for ATM Re-KYC by integrating BASE24 with UPF using ISO8583, including TLV parsing and secure API orchestration with NSDL services",
         "Engineered end-to-end transaction processing logic covering PAN status interpretation, structured ISO response construction, and customer name-matching validation to ensure regulatory-compliant KYC verification",
         "Built resilient error-handling and response-code mapping mechanisms with timeout and format validation safeguards to maintain reliability in high-volume ATM transaction environments",
-        "Architected a standardized OpenAPI 3.0 RESTful interface for UPF transactions, utilizing a contract-first approach to streamline microservice orchestration and ensure schema consistency",
-        "Engineered a high-performance IBM MQ asynchronous messaging framework using the Request-Reply pattern and custom Java/Maven simulators to optimize transaction reliability and decoupling for UPF orchestration"
+        "Architected a standardized RESTful interface and asynchronous messaging framework for UPF transactions, utilizing a contract-first, request-reply design to streamline microservice orchestration and optimize transaction reliability",
+        "Engineered a high-performance asynchronous messaging framework using the Request-Reply pattern and custom simulators to optimize transaction reliability and decoupling for UPF orchestration"
       ],
-      technologies: ["UPF", "VM", "Java", "Spring Boot", "Oracle DB", "Postman", "SoapUI", "IBM MQ", "REST APIs", "OpenAPI"],
+      technologies: ["UPF", "VM", "Java", "Spring Boot", "Oracle DB", "Maven", "Postman", "SoapUI", "IBM MQ", "REST APIs", "OpenAPI"],
       documents: [
         { name: "Offer Letter", url: "/documents/ACI-Worldwide-Offer.pdf" }
       ]
