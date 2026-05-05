@@ -1,8 +1,20 @@
 import { BarChart3, Users, GitCommit, Code, Activity, Star, GitPullRequest, AlertCircle, Trophy } from 'lucide-react';
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer} from "recharts";
 
+const buildWakaTimeChartData = (activityGraph = []) =>
+  activityGraph.map((entry) => {
+    const totalSeconds = entry.grand_total?.total_seconds || 0;
+
+    return {
+      date: entry.range?.date,
+      hours: Number((totalSeconds / 3600).toFixed(2)),
+      duration: entry.grand_total?.text || '0 secs',
+    };
+  });
+
 const StatsTab = ({ devStats }) => {
   const { github, leetcode, wakatime30Days, wakatimeAllTime } = devStats;
+  const wakaTimeChartData = buildWakaTimeChartData(wakatime30Days?.activityGraph);
 
   return (
     <section className="repo-container">
@@ -152,15 +164,12 @@ const StatsTab = ({ devStats }) => {
                 {wakatime30Days?.activityGraph ? (
                   <ResponsiveContainer width="100%" height="100%">
                     <BarChart
-                      data={wakatime30Days.activityGraph.map((entry) => ({
-                        date: entry.range.date,
-                        hours: entry.grand_total.hours || 0,
-                      }))}
+                      data={wakaTimeChartData}
                     >
                       <CartesianGrid strokeDasharray="3 3" />
                       <XAxis dataKey="date" tick={{ fontSize: 9 }} interval={3} />
-                      <YAxis />
-                      <Tooltip formatter={(value) => `${value} hrs`} />
+                      <YAxis allowDecimals tickFormatter={(value) => `${value}h`} />
+                      <Tooltip formatter={(value, _name, item) => [item.payload.duration, 'Coding time']} />
                       <Bar dataKey="hours" fill="#8b5cf6" radius={[4, 4, 0, 0]} />
                     </BarChart>
                   </ResponsiveContainer>
