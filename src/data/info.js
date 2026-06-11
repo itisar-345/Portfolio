@@ -1,11 +1,5 @@
 export const projects = [
     {
-      title: "AI-Powered Productivity Platform",
-      description: "• Enterprise-grade AI productivity platform unifying email, meetings, research, automation, and knowledge systems \n• Hybrid RAG (vector + keyword search) with citation-level grounding to reduce hallucinations\n• rivacy-first design with on-device transcription and encrypted local processing\n• Natural language → workflow automation with approval gates and rollback logic\n• Knowledge graph (Neo4j) linking decisions, rationale, and artifacts for contextual intelligence",
-      techStack: ["Next.js", "FastAPI", "PostgreSQL", "Neo4j", "Qdrant", "LangChain", "Whisper", "Ollama", "RAG", "OAuth2", "OPA", "Keycloak", "AES-256", "Docker", "Kubernetes", "Redis" ],
-      githubUrl: "https://github.com/itisar-345/FUTUREOFWORK_PRODUCTIVITY"
-    },
-    {
       title: "Sentinel AI",
       description: "• Enterprise-grade AI system for real-time DDoS detection & mitigation in 5G networks\n• Detects and blocks attacks in <50ms using ensemble ML\n• Autonomous SDN-based mitigation via Ryu with auto-block & recovery\n• 5G slice-aware security for eMBB, URLLC, and mMTC traffic\n• Live monitoring dashboard with explainable AI insights and attack analytics",
       techStack: ["Python", "React", "Node.js", "Flask", "Ryu", "Mininet", "SDN", "WebSockets", "TensorFlow", "Linux"],
