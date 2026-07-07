@@ -7,6 +7,12 @@ export const projects = [
       imageUrl: "/sentinal.gif"
     },
     {
+      title: "Knowledge Hub",
+      description: "• AI-powered knowledge management platform with GraphRAG-based search\n• Extracts structured knowledge from documents, notes, transcripts, and URLs\n• Uses LLMs + Neo4j Knowledge Graph for semantic retrieval and contextual Q&A\n• Supports document ingestion, relationship visualization, and review workflows\n• Converts unstructured content into searchable, reusable organizational knowledge",
+      techStack: ["Python", "FastAPI", "Angular", "Neo4j", "GraphRAG", "Llama 3.1", "Vector Embeddings", "Docker"],
+      githubUrl: "https://github.com/itisar-345/KnowledgeHubby",
+    },
+    {
       title: "Peachy Shop",
       description: "• Full-stack e-commerce platform built with Spring Boot + React with dual-token JWT authentication (auto refresh)\n• Redis-powered architecture (Hash for cart, Set for wishlist, Cache-Aside for products) with <100ms cached responses\n• Role-based access control (Customer/Vendor) with secure REST APIs and method-level authorization\n• Stock-aware order lifecycle (validation, optimistic locking, auto-reduction on delivery)\n• Production-grade MySQL + Redis dual-write system with pagination and concurrency-safe operations",
       techStack: ["Java", "Spring Boot", "Maven", "React", "Typescript", "Tailwind", "SQL", "Docker", "Redis", "JWT", "RESTful APIs", "RBAC"],
@@ -49,13 +55,15 @@ export const experiences = [
       startDate: "2026-01",
       endDate: "present",
       description: [
-        "Designed and implemented a real-time PAN validation pipeline for ATM Re-KYC by integrating BASE24 with UPF using ISO8583, including TLV parsing and secure API orchestration with NSDL services",
-        "Engineered end-to-end transaction processing logic covering PAN status interpretation, structured ISO response construction, and customer name-matching validation to ensure regulatory-compliant KYC verification",
-        "Built resilient error-handling and response-code mapping mechanisms with timeout and format validation safeguards to maintain reliability in high-volume ATM transaction environments",
-        "Architected a standardized RESTful interface and asynchronous messaging framework for UPF transactions, utilizing a contract-first, request-reply design to streamline microservice orchestration and optimize transaction reliability",
-        "Engineered a high-performance asynchronous messaging framework using the Request-Reply pattern and custom simulators to optimize transaction reliability and decoupling for UPF orchestration"
+        "Developed Card Inquiry and Card Update services for Indian Bank's IVRS platform on ACI UPF, integrating BASE24 Switch, IVRS, and DCMS decryption with secure handling and masking of sensitive cardholder data.",
+        "Designed and implemented a real-time PAN validation pipeline for ATM Re-KYC by integrating BASE24, UPF, and NSDL services using ISO 8583 messaging, TLV parsing, and secure API orchestration.",
+        "Engineered end-to-end transaction processing logic including PAN validation, customer name matching, ISO 8583 response construction, response-code mapping, timeout handling, and resilient error recovery for high-volume ATM transactions.",
+        "Designed and implemented asynchronous Request-Reply messaging patterns and standardized RESTful APIs for UPF microservices, improving transaction reliability, service decoupling, and orchestration.",
+        "Performed proof-of-concept setup and configuration of IBM MQ on Linux, including Queue Managers, TCP listeners, server/client channels, persistence policies, authentication rules, and end-to-end message routing validation.",
+        "Authored Software Solution Design (SSD) documentation for SBI's WhatsApp Debit Card Decline Notification feature, defining solution architecture, ISO 8583 message specifications, message flows, GAP analysis, and implementation strategy for the UPF platform.",
+        "Designed comprehensive OpenAPI (YAML) specifications and API documentation for SBI's In-App ATM Complaint Management System covering Transaction Inquiry, Complaint Registration, and Complaint Tracking APIs with request/response schemas, validation rules, HTTP headers, and standardized error handling."
       ],
-      technologies: ["UPF", "VM", "Java", "Spring Boot", "Oracle DB", "Maven", "Postman", "SoapUI", "IBM MQ", "REST APIs", "OpenAPI"],
+      technologies: ["UPF", "VM", "Java", "Spring Boot", "Oracle DB", "Maven", "Linux", "Postman", "SoapUI", "IBM MQ", "REST APIs", "OpenAPI"],
       documents: [
         { name: "Offer Letter", url: "/documents/ACI-Worldwide-Offer.pdf" }
       ]
