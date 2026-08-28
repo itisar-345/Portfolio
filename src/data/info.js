@@ -47,23 +47,33 @@ export const projects = [
 
 export const experiences = [
   {
+    id: "e5",
+    company: "ACI Worldwide",
+    position: "Associate Technical Consultant",
+    location: "Mumbai, India",
+    type: "Full-time",
+    startDate: "2026-07",
+    endDate: "present",
+    description: [
+      "Developing Card Inquiry and Card Update APIs in UPF for Indian Bank's IVRS channel, integrating Middleware, UPF, and BASE24 through JSON and ISO 0300/0310 transactions for card blocking, limit updates, CAF processing, authentication, and SMS workflows",
+      "Engineered UPF–EIS–Visa VMORC API integration for SBI, implementing scheduled and paginated offer retrieval, payload validation, transformation, lifecycle management, repository persistence, and AES/RSA-based security",
+    ],
+    technologies: ["UPF", "Java", "Spring Boot", "Oracle DB", "Maven", "REST APIs", "OpenAPI", "ISO 8583", "JSON", "AES/RSA"]
+  },
+  {
       id: "e4",
       company: "ACI Worldwide",
-      position: "Tech Consultant Intern",
+      position: "Technical Consultant Intern",
       location: "Mumbai, India",
       type: "Internship",
       startDate: "2026-01",
-      endDate: "present",
+      endDate: "2026-06",
       description: [
-        "Developed Card Inquiry and Card Update services for Indian Bank's IVRS platform on ACI UPF, integrating BASE24 Switch, IVRS, and DCMS decryption with secure handling and masking of sensitive cardholder data.",
-        "Designed and implemented a real-time PAN validation pipeline for ATM Re-KYC by integrating BASE24, UPF, and NSDL services using ISO 8583 messaging, TLV parsing, and secure API orchestration.",
-        "Engineered end-to-end transaction processing logic including PAN validation, customer name matching, ISO 8583 response construction, response-code mapping, timeout handling, and resilient error recovery for high-volume ATM transactions.",
-        "Designed and implemented asynchronous Request-Reply messaging patterns and standardized RESTful APIs for UPF microservices, improving transaction reliability, service decoupling, and orchestration.",
-        "Performed proof-of-concept setup and configuration of IBM MQ on Linux, including Queue Managers, TCP listeners, server/client channels, persistence policies, authentication rules, and end-to-end message routing validation.",
-        "Authored Software Solution Design (SSD) documentation for SBI's WhatsApp Debit Card Decline Notification feature, defining solution architecture, ISO 8583 message specifications, message flows, GAP analysis, and implementation strategy for the UPF platform.",
-        "Designed comprehensive OpenAPI (YAML) specifications and API documentation for SBI's In-App ATM Complaint Management System covering Transaction Inquiry, Complaint Registration, and Complaint Tracking APIs with request/response schemas, validation rules, HTTP headers, and standardized error handling."
+        "Engineered PAN validation integration in UPF for BASE24 ATM Re-KYC workflows, implementing ISO 8583 0200/0210 processing, DE-125 extraction, external PAN validation APIs, customer-data validation, and response-code mapping",
+        "Developed end-to-end payment transaction flows in UPF, integrating BASE24 with external banking services through HISO interfaces with request/response processing, data transformation, validation, and resilient error handling",
+        "Built asynchronous Request-Reply messaging flows and custom simulators to improve transaction decoupling and reliability across UPF orchestration"
       ],
-      technologies: ["UPF", "VM", "Java", "Spring Boot", "Oracle DB", "Maven", "Linux", "Postman", "SoapUI", "IBM MQ", "REST APIs", "OpenAPI"],
+      technologies: ["UPF", "Java", "ISO 8583", "HISO", "REST APIs", "IBM MQ", "OpenAPI", "Oracle DB", "Maven", "SoapUI", "Postman"],
       documents: [
         { name: "Offer Letter", url: "/documents/ACI-Worldwide-Offer.pdf" }
       ]
