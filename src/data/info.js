@@ -1,47 +1,43 @@
 export const projects = [
     {
+      title: "Regula",
+      description: "• Agentic continuous-compliance engine that turns regulatory change into engineering action\n• Six LLM agents + deterministic rules map regulations to controls, scan real AWS/GitHub environments, and assess risk\n• Neo4j compliance graph (Regulation → Requirement → Control → System → Finding → Action) enables one-traversal impact analysis\n• YAML \"Compliance Constitution\" policy engine gates remediations with human approval and post-fix verification\n• Append-only audit trail with provenance, OpenTelemetry tracing, and CI-enforced testing & LLM evals",
+      techStack: ["Python", "FastAPI", "Neo4j", "React", "Typescript", "PostgreSQL", "Qdrant", "Groq LLMs", "AWS", "Docker", "OpenTelemetry"],
+      githubUrl: "https://github.com/itisar-345/Regula",
+    },
+    {
       title: "Sentinel AI",
-      description: "• Enterprise-grade AI system for real-time DDoS detection & mitigation in 5G networks\n• Detects and blocks attacks in <50ms using ensemble ML\n• Autonomous SDN-based mitigation via Ryu with auto-block & recovery\n• 5G slice-aware security for eMBB, URLLC, and mMTC traffic\n• Live monitoring dashboard with explainable AI insights and attack analytics",
-      techStack: ["Python", "React", "Node.js", "Flask", "Ryu", "Mininet", "SDN", "WebSockets", "TensorFlow", "Linux"],
+      description: "• Enterprise-grade AI system for real-time DDoS detection & mitigation in 5G networks\n• Ensemble ML (RandomForest, XGBoost, LSTM, Autoencoder) classifies traffic in <50ms\n• Autonomous SDN-based mitigation via Ryu with OpenFlow auto-block & recovery\n• 5G slice-aware security for eMBB, URLLC, and mMTC traffic\n• Live monitoring dashboard with explainable AI insights and attack analytics",
+      techStack: ["Python", "TensorFlow", "Ryu", "SDN", "React", "Node.js", "Flask", "Mininet", "WebSockets", "Linux"],
       githubUrl: "https://github.com/itisar-345/Sentinel-AI",
       imageUrl: "/sentinal.gif"
     },
     {
-      title: "Knowledge Hub",
-      description: "• AI-powered knowledge management platform with GraphRAG-based search\n• Extracts structured knowledge from documents, notes, transcripts, and URLs\n• Uses LLMs + Neo4j Knowledge Graph for semantic retrieval and contextual Q&A\n• Supports document ingestion, relationship visualization, and review workflows\n• Converts unstructured content into searchable, reusable organizational knowledge",
-      techStack: ["Python", "FastAPI", "Angular", "Neo4j", "GraphRAG", "Llama 3.1", "Vector Embeddings", "Docker"],
-      githubUrl: "https://github.com/itisar-345/KnowledgeHubby",
-    },
-    {
       title: "Peachy Shop",
       description: "• Full-stack e-commerce platform built with Spring Boot + React with dual-token JWT authentication (auto refresh)\n• Redis-powered architecture (Hash for cart, Set for wishlist, Cache-Aside for products) with <100ms cached responses\n• Role-based access control (Customer/Vendor) with secure REST APIs and method-level authorization\n• Stock-aware order lifecycle (validation, optimistic locking, auto-reduction on delivery)\n• Production-grade MySQL + Redis dual-write system with pagination and concurrency-safe operations",
-      techStack: ["Java", "Spring Boot", "Maven", "React", "Typescript", "Tailwind", "SQL", "Docker", "Redis", "JWT", "RESTful APIs", "RBAC"],
+      techStack: ["Java", "Spring Boot", "Redis", "React", "Typescript", "Maven", "Tailwind", "SQL", "Docker", "JWT", "RESTful APIs", "RBAC"],
       githubUrl: "https://github.com/itisar-345/E-commerce-Project/",
       imageUrl: "/ecommerce.gif"
     },
     {
+      title: "Knowledge Hub",
+      description: "• Local-first team knowledge base with GraphRAG Q&A that cites its sources and flags superseded decisions\n• Extracts decisions, risks, lessons, and how-tos from documents, URLs, transcripts, email, and Slack exports\n• Tracks decision lineage (supersede, reverse, amend) with a review queue for every extracted item\n• Connectors for Git ADRs, GitHub, Jira, and Linear, with private and shared group spaces\n• Fully local AI (Ollama + sentence-transformers); production stack with load balancer, Celery, and a 3-node ArcadeDB cluster",
+      techStack: ["Python", "FastAPI", "GraphRAG", "Angular", "ArcadeDB", "Ollama", "Celery", "Docker"],
+      githubUrl: "https://github.com/itisar-345/KnowledgeHubby",
+    },
+    {
       title: "Invoice Data Extractor",
       description: "• Windows desktop app (.exe) for AI-based invoice data extraction\n• Extracts structured data from PDF/JPG invoices (~91% accuracy, 1000+ tested)\n• Uses OCR + LLM (Groq / LLaMA 3.1) with intelligent fallback\n• Supports multi-file processing and append-safe Excel export\n• Standardized, analytics-ready output for real-world workflows",
-      techStack: ["Electron", "Python", "OCR", "LLMs", "Pandas", "OpenCV", "Tesseract"],
+      techStack: ["Python", "LLMs", "OCR", "Electron", "Pandas", "OpenCV", "Tesseract"],
       githubUrl: "https://github.com/Cherry28831/Invoice-Data-Extractor",
       liveUrl: "https://github.com/Cherry28831/Invoice-Data-Extractor/releases/tag/v2.0.0",
       imageUrl: "/invoiceextractor.gif"
     },
     {
-      title: "AI Resume Scanner",
-      description: "• AI-powered ATS resume checker for scoring and optimizing resumes\n• Analyzes PDF/DOCX/TXT resumes with category-wise ATS compatibility scores\n• Generates actionable improvement suggestions with before–after comparisons using LLMs\n• Privacy-first design with local resume history and analytics",
-      techStack: ["Python", "React", "Express.js", "LLMs", "PDF.js", "Mammoth", "LocalStorage" ],
-      githubUrl: "https://github.com/itisar-345/ATS-Checker",
-      liveUrl: "https://ats-checker-alpha.vercel.app/",
-      imageUrl: "/atschecker.gif"
-    },
-    {
-      title: "Diabetes Check Web App",
-      description: "• ML-powered web app for diabetes risk prediction (Healthy / Prediabetic / Diabetic)\n• Trained Random Forest model (~84% accuracy) on CDC BRFSS health indicators\n• Real-time Flask inference with personalized health & lifestyle recommendations\n• Probability-based prediction visualization for model confidence\n• Deployed on Render with optimized, lightweight ML pipeline",
-      techStack: ["Python", "Flask", "Scikit-learn", "Pandas", "NumPy", "HTML/CSS", "Render", "ML"],
-      githubUrl: "https://github.com/itisar-345/Diabetes-Predictor",
-      liveUrl: "https://diabetes-predictor-g5yv.onrender.com/",
-      imageUrl: "/diabetespredictor.gif"
+      title: "CycleIQ",
+      description: "• Privacy-first, fully local period & symptom tracker for PCOS, endometriosis, perimenopause, and irregular cycles\n• Tiered on-device prediction engine (Bayesian blend → adaptive EW → rules → Gaussian Process Regression)\n• Symptom insights via Spearman correlations, cycle-phase overlays, and flare pattern analysis\n• Encrypted storage with SQLCipher and AES-256-GCM, no accounts, servers, or analytics SDKs\n• Doctor-ready PDF reports plus JSON/CSV backup and export",
+      techStack: ["React Native", "Expo", "Typescript", "SQLCipher", "Zustand", "SQLite", "AES-256-GCM"],
+      githubUrl: "https://github.com/itisar-345/CycleIQ",
     }
 ];
 
