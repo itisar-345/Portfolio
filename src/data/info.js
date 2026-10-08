@@ -3,7 +3,8 @@ export const projects = [
       title: "Regula",
       description: "• Agentic continuous-compliance engine that turns regulatory change into engineering action\n• Six LLM agents + deterministic rules map regulations to controls, scan real AWS/GitHub environments, and assess risk\n• Neo4j compliance graph (Regulation → Requirement → Control → System → Finding → Action) enables one-traversal impact analysis\n• YAML \"Compliance Constitution\" policy engine gates remediations with human approval and post-fix verification\n• Append-only audit trail with provenance, OpenTelemetry tracing, and CI-enforced testing & LLM evals",
       techStack: ["Python", "FastAPI", "Neo4j", "React", "Typescript", "PostgreSQL", "Qdrant", "Groq LLMs", "AWS", "Docker", "OpenTelemetry"],
-      githubUrl: "https://github.com/itisar-345/Regula",
+      githubUrl: "https://github.com/Team-Existing/Regula",
+      imageUrl: "/regula.gif"
     },
     {
       title: "Sentinel AI",
@@ -23,7 +24,8 @@ export const projects = [
       title: "Knowledge Hub",
       description: "• Local-first team knowledge base with GraphRAG Q&A that cites its sources and flags superseded decisions\n• Extracts decisions, risks, lessons, and how-tos from documents, URLs, transcripts, email, and Slack exports\n• Tracks decision lineage (supersede, reverse, amend) with a review queue for every extracted item\n• Connectors for Git ADRs, GitHub, Jira, and Linear, with private and shared group spaces\n• Fully local AI (Ollama + sentence-transformers); production stack with load balancer, Celery, and a 3-node ArcadeDB cluster",
       techStack: ["Python", "FastAPI", "GraphRAG", "Angular", "ArcadeDB", "Ollama", "Celery", "Docker"],
-      githubUrl: "https://github.com/itisar-345/KnowledgeHubby",
+      githubUrl: "https://github.com/Team-Existing/KnowledgeHub",
+      imageUrl: "/knowledgehub.gif"
     },
     {
       title: "Invoice Data Extractor",
