@@ -40,6 +40,7 @@ export const projects = [
       description: "• Privacy-first, fully local period & symptom tracker for PCOS, endometriosis, perimenopause, and irregular cycles\n• Tiered on-device prediction engine (Bayesian blend → adaptive EW → rules → Gaussian Process Regression)\n• Symptom insights via Spearman correlations, cycle-phase overlays, and flare pattern analysis\n• Encrypted storage with SQLCipher and AES-256-GCM, no accounts, servers, or analytics SDKs\n• Doctor-ready PDF reports plus JSON/CSV backup and export",
       techStack: ["React Native", "Expo", "Typescript", "SQLCipher", "Zustand", "SQLite", "AES-256-GCM"],
       githubUrl: "https://github.com/itisar-345/CycleIQ",
+      imageUrl: "/cycleiq.gif"
     }
 ];
 
@@ -53,10 +54,11 @@ export const experiences = [
     startDate: "2026-07",
     endDate: "present",
     description: [
-      "Developing Card Inquiry and Card Update APIs in UPF for Indian Bank's IVRS channel, integrating Middleware, UPF, and BASE24 through JSON and ISO 0300/0310 transactions for card blocking, limit updates, CAF processing, authentication, and SMS workflows",
-      "Engineered UPF–EIS–Visa VMORC API integration for SBI, implementing scheduled and paginated offer retrieval, payload validation, transformation, lifecycle management, repository persistence, and AES/RSA-based security",
+      "Developed Card Inquiry and Card Update APIs in UPF for Indian Bank's IVRS channel, integrating Middleware, UPF, and BASE24 through JSON and ISO 8583 transactions for card blocking, limit updates, CAF processing, authentication, and SMS workflows",
+      "Implemented PIN verification flows for Axis Bank's migration from Webgate to UPF, porting legacy authentication logic onto the UPF orchestration platform",
+      "Delivered code upliftment of SBI's AutoCaller, Re-KYC MVS, and LRS modules, modernizing existing transaction flows for improved maintainability and platform compatibility"
     ],
-    technologies: ["UPF", "Java", "Spring Boot", "Oracle DB", "Maven", "REST APIs", "OpenAPI", "ISO 8583", "JSON", "AES/RSA"]
+    technologies: ["UPF", "Java", "Spring Boot", "Oracle DB", "Maven", "REST APIs", "OpenAPI", "ISO 8583", "JSON", "XML", "AES/RSA"]
   },
   {
       id: "e4",
