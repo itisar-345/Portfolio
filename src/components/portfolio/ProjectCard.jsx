@@ -1,4 +1,4 @@
-import { ExternalLink, Github, Code, Package, ChevronDown, Zap } from 'lucide-react';
+import { ExternalLink, Github, Code, Package, ChevronDown, Zap, Lock } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 const parseDescription = (text = '') =>
@@ -7,7 +7,7 @@ const parseDescription = (text = '') =>
     .map((line) => line.replace(/^•\s*/, '').trim())
     .filter(Boolean);
 
-const ProjectCard = ({ title, description, techStack = [], githubUrl, liveUrl, imageUrl, isExpanded, onToggle }) => {
+const ProjectCard = ({ title, description, techStack = [], githubUrl, liveUrl, imageUrl, isPrivate, isExpanded, onToggle }) => {
   const descriptionLines = parseDescription(description);
 
   return (
@@ -25,6 +25,7 @@ const ProjectCard = ({ title, description, techStack = [], githubUrl, liveUrl, i
             <div className="package-header">
               <Package size={16} className="package-icon" />
               <span className="package-name">{title}</span>
+              {isPrivate && <span className="private-badge">Private</span>}
             </div>
             <div className="package-description-row">
               <p className="package-description">{descriptionLines[0]}</p>
@@ -60,6 +61,11 @@ const ProjectCard = ({ title, description, techStack = [], githubUrl, liveUrl, i
               <a href={githubUrl} target="_blank" rel="noreferrer" className="package-action" title="View Source">
                 <Github size={14} />
               </a>
+            )}
+            {!githubUrl && isPrivate && (
+              <span className="package-action private-source" title="Private repository">
+                <Lock size={14} />
+              </span>
             )}
           </div>
         </td>

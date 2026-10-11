@@ -1,5 +1,22 @@
 import { credentials } from '../config/credentials';
 
+const REQUEST_TIMEOUT_MS = 8000;
+
+const fetchWithTimeout = async (url, options = {}) => {
+  const controller = new AbortController();
+  const timer = setTimeout(() => controller.abort(), REQUEST_TIMEOUT_MS);
+  try {
+    return await fetch(url, { ...options, signal: controller.signal });
+  } catch (err) {
+    if (err.name === 'AbortError') {
+      throw new Error(`Request timed out after ${REQUEST_TIMEOUT_MS / 1000}s`);
+    }
+    throw err;
+  } finally {
+    clearTimeout(timer);
+  }
+};
+
 export const fetchGitHubStats = async () => {
   try {
     const token = credentials.github.token;
@@ -80,7 +97,7 @@ export const fetchGitHubStats = async () => {
         }
       }
     `;
-    const response = await fetch("https://api.github.com/graphql", {
+    const response = await fetchWithTimeout("https://api.github.com/graphql", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -144,24 +161,16 @@ export const fetchLeetCodeStats = async () => {
   const baseUrl = `https://alfa-leetcode-api.onrender.com/${username}`;
   
   try {
-    // Fetch sequentially with delays to avoid rate limiting
-    const profileRes = await fetch(`${baseUrl}/profile`);
-    if (!profileRes.ok) throw new Error('LeetCode profile API error');
-    const profile = await profileRes.json();
-    
-    // Add delay between requests
-    await new Promise(resolve => setTimeout(resolve, 500));
-    
-    const contestRes = await fetch(`${baseUrl}/contest`);
-    if (!contestRes.ok) throw new Error('LeetCode contest API error');
-    const contest = await contestRes.json();
-    
-    // Add delay between requests
-    await new Promise(resolve => setTimeout(resolve, 500));
-    
-    const solvedRes = await fetch(`${baseUrl}/solved`);
-    if (!solvedRes.ok) throw new Error('LeetCode solved API error');
-    const solvedData = await solvedRes.json();
+    const fetchJson = async (path) => {
+      const res = await fetchWithTimeout(`${baseUrl}/${path}`);
+      if (!res.ok) throw new Error(`LeetCode ${path} API error`);
+      return res.json();
+    };
+    const [profile, contest, solvedData] = await Promise.all([
+      fetchJson('profile'),
+      fetchJson('contest'),
+      fetchJson('solved'),
+    ]);
 
     const bestContestEntry = contest.contestParticipation?.reduce((prev, curr) => 
       (prev.ranking < curr.ranking) ? prev : curr
@@ -210,7 +219,7 @@ export const fetchWakaTimeStats = async (timeRange = 'last30') => {
   if (!url) return null;
 
   try {
-    const response = await fetch(url);
+    const response = await fetchWithTimeout(url);
     if (!response.ok) throw new Error(`WakaTime API error: ${response.status}`);
 
     const data = await response.json();
@@ -235,45 +244,10 @@ export const fetchWakaTimeStats = async (timeRange = 'last30') => {
   }
 };
 
-export const fetchAllStats = async () => {
-  const results = { github: null, leetcode: null, wakatime30Days: null, wakatimeAllTime: null, errors: {} };
-  
-  // Fetch GitHub stats first
-  try {
-    results.github = await fetchGitHubStats();
-  } catch (error) {
-    results.errors.github = error.message;
-  }
-  
-  // Add delay before LeetCode
-  await new Promise(resolve => setTimeout(resolve, 1000));
-  
-  // Fetch LeetCode stats
-  try {
-    results.leetcode = await fetchLeetCodeStats();
-  } catch (error) {
-    results.errors.leetcode = error.message;
-  }
-  
-  // Add delay before WakaTime
-  await new Promise(resolve => setTimeout(resolve, 500));
-  
-  // Fetch WakaTime stats (30 days)
-  try {
-    results.wakatime30Days = await fetchWakaTimeStats('last30');
-  } catch (error) {
-    results.errors.wakatime30Days = error.message;
-  }
-  
-  // Add delay before final WakaTime call
-  await new Promise(resolve => setTimeout(resolve, 500));
-  
-  // Fetch WakaTime stats (all time)
-  try {
-    results.wakatimeAllTime = await fetchWakaTimeStats('all');
-  } catch (error) {
-    results.errors.wakatimeAllTime = error.message;
-  }
-  
-  return results;
+// Each stats section is fetched independently so it can render as soon as it arrives
+export const statsSources = {
+  github: fetchGitHubStats,
+  leetcode: fetchLeetCodeStats,
+  wakatime30Days: () => fetchWakaTimeStats('last30'),
+  wakatimeAllTime: () => fetchWakaTimeStats('all'),
 };

@@ -38,6 +38,7 @@ const getProjectHighlights = (items = [], limit = 3) =>
     techStack: project.techStack?.slice(0, 4) || [],
     githubUrl: project.githubUrl,
     liveUrl: project.liveUrl,
+    isPrivate: project.isPrivate,
   }));
 
 
@@ -97,7 +98,7 @@ const HomePage = () => {
               <p className="github-handle">@ritisa-behera</p>
               <h1 className="glitch-text" data-text="Ritisa Behera">Ritisa Behera</h1>
               <p className="github-tagline">
-                <Typewriter text="Software Developer & Problem Solver" delay={75} />
+                <Typewriter text="Developer & Problem Solver" delay={75} />
               </p>
             </div>
             <div className="github-actions">
@@ -177,6 +178,9 @@ const HomePage = () => {
                                   <a href={project.githubUrl} target="_blank" rel="noreferrer">
                                     Code
                                   </a>
+                                )}
+                                {!project.githubUrl && project.isPrivate && (
+                                  <span className="private-badge" title="Private repository">Private</span>
                                 )}
                               </div>
                             </div>

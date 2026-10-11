@@ -3,8 +3,8 @@ export const projects = [
       title: "Regula",
       description: "• Agentic continuous-compliance engine that turns regulatory change into engineering action\n• Six LLM agents + deterministic rules map regulations to controls, scan real AWS/GitHub environments, and assess risk\n• Neo4j compliance graph (Regulation → Requirement → Control → System → Finding → Action) enables one-traversal impact analysis\n• YAML \"Compliance Constitution\" policy engine gates remediations with human approval and post-fix verification\n• Append-only audit trail with provenance, OpenTelemetry tracing, and CI-enforced testing & LLM evals",
       techStack: ["Python", "FastAPI", "Neo4j", "React", "Typescript", "PostgreSQL", "Qdrant", "Groq LLMs", "AWS", "Docker", "OpenTelemetry"],
-      githubUrl: "https://github.com/Team-Existing/Regula",
-      imageUrl: "/regula.gif"
+      imageUrl: "/regula.gif",
+      isPrivate: true
     },
     {
       title: "Sentinel AI",
@@ -50,7 +50,7 @@ export const experiences = [
     company: "ACI Worldwide",
     position: "Associate Technical Consultant",
     location: "Mumbai, India",
-    type: "Full-time",
+    type: "Full-Time",
     startDate: "2026-07",
     endDate: "present",
     description: [
@@ -58,7 +58,7 @@ export const experiences = [
       "Implemented PIN verification flows for Axis Bank's migration from Webgate to UPF, porting legacy authentication logic onto the UPF orchestration platform",
       "Delivered code upliftment of SBI's AutoCaller, Re-KYC MVS, and LRS modules, modernizing existing transaction flows for improved maintainability and platform compatibility"
     ],
-    technologies: ["UPF", "Java", "Spring Boot", "Oracle DB", "Maven", "REST APIs", "OpenAPI", "ISO 8583", "JSON", "XML", "AES/RSA"]
+    technologies: ["Java", "Spring Boot", "Maven", "Oracle DB", "Websocket", "REST APIs", "OpenAPI", "Websphere MQ", "ISO 8583", "UPF", "JSON", "XML", "AES/RSA"]
   },
   {
       id: "e4",

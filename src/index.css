@@ -17,6 +17,40 @@
   font-family: 'JetBrains Mono', 'SFMono-Regular', 'Segoe UI', sans-serif;
 }
 
+:root {
+  color-scheme: dark;
+  --glitch-1: #0ff;
+  --glitch-2: #f0f;
+  --badge-more: #ffc107;
+  --cursor-blend: screen;
+}
+
+/* Light theme: follows the visitor's device setting */
+@media (prefers-color-scheme: light) {
+  :root {
+    color-scheme: light;
+    --bg: #f7f6fb;
+    --surface: rgba(255, 255, 255, 0.78);
+    --surface-2: rgba(246, 243, 255, 0.85);
+    --surface-3: rgba(237, 233, 254, 0.9);
+    --border: rgba(124, 58, 237, 0.18);
+    --border-strong: rgba(124, 58, 237, 0.38);
+    --accent: #7c3aed;
+    --accent-soft: #8b5cf6;
+    --accent-rgb: 124, 58, 237;
+    --text: #18181b;
+    --muted: #52525b;
+    --muted-2: #6b6b76;
+    --shadow: 0 8px 28px rgba(124, 58, 237, 0.1);
+    --glow: 0 0 12px rgba(124, 58, 237, 0.22);
+    --pulse: 0 0 16px rgba(124, 58, 237, 0.3);
+    --glitch-1: #0891b2;
+    --glitch-2: #c026d3;
+    --badge-more: #b45309;
+    --cursor-blend: multiply;
+  }
+}
+
 
 * {
   box-sizing: border-box;
@@ -43,7 +77,7 @@ html, body {
   z-index: 9999;
   background: radial-gradient(circle at center, rgba(139, 92, 246, 0.4), transparent 70%);
   filter: blur(8px);
-  mix-blend-mode: screen;
+  mix-blend-mode: var(--cursor-blend);
   transition: transform 0.1s ease;
 }
 
@@ -57,25 +91,6 @@ html, body {
   transform-origin: 0%;
   z-index: 9998;
   box-shadow: var(--glow);
-}
-
-.scanlines {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  pointer-events: none;
-  z-index: 9997;
-  background: linear-gradient(
-    to bottom,
-    rgba(255, 255, 255, 0),
-    rgba(255, 255, 255, 0) 50%,
-    rgba(0, 0, 0, 0.2) 50%,
-    rgba(0, 0, 0, 0.2)
-  );
-  background-size: 100% 4px;
-  opacity: 0.35;
 }
 
 /* Cyber Glitch Effect */
@@ -101,13 +116,13 @@ html, body {
 }
 
 .glitch-text:hover::before {
-  color: #0ff;
+  color: var(--glitch-1);
   z-index: -1;
   animation: glitch-anim-1 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) both infinite;
 }
 
 .glitch-text:hover::after {
-  color: #f0f;
+  color: var(--glitch-2);
   z-index: -2;
   animation: glitch-anim-2 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) both infinite;
 }
@@ -536,6 +551,28 @@ a {
   text-decoration: underline;
 }
 
+.private-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 0 0.45rem;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  color: var(--muted);
+  font-size: 0.72rem;
+  line-height: 1.4rem;
+}
+
+.package-action.private-source {
+  display: inline-flex;
+  cursor: default;
+}
+
+.package-action.private-source:hover {
+  background-color: transparent;
+  color: var(--muted);
+  transform: none;
+}
+
 .project-highlight-summary {
   margin: 0.5rem 0 0;
   color: var(--muted);
@@ -946,7 +983,7 @@ a {
 .tech-badge.more {
   background: rgba(255, 193, 7, 0.1);
   border-color: rgba(255, 193, 7, 0.3);
-  color: #ffc107;
+  color: var(--badge-more);
 }
 
 .package-actions {

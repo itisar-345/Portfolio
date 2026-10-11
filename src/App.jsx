@@ -20,7 +20,6 @@ function App() {
 
   return (
     <Router>
-      <div className="scanlines" />
       <FloatingParticles />
       <CustomCursor />
       <ScrollProgress />
